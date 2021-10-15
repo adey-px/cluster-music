@@ -18,7 +18,7 @@
     <!-- External core links - Bootstrap CSS first, jQuery, Popper.js, then Bootstrap JS from Bootstrap page -->
     {% block corecss %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    {% enblock %}
+    {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
@@ -37,21 +37,20 @@
     </head>
 
     <body>
-        
+
        <header class="container fixed-top"></header>
+       {% block extra_header %}
+       {% endblock %}
 
        {% if messages %}
             <div class="message-container"></div>
        {% endif %}
 
-       {% block page_header %}
+       {% block content %}
        {% endblock %}
 
        {% block postloadjs %}
-       [% endblock %]
+       {% endblock %}
 
-   
-        
-        
     </body>
 </html>
