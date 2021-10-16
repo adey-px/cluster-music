@@ -1,0 +1,12 @@
+body {
+    background: blueviolet;
+}
+
+.card-text {
+    color: blueviolet;
+    font-size: larger;
+}
+
+.main-header {
+    margin-bottom: 100px;
+}

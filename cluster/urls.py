@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('', include('home.urls')),
+    path('accounts/', include('allauth.urls')),  # This line copied from Allauth site Installation page
+    path('', include('home.urls')),  # Home page/app url
 ]

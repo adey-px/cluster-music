@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', # From this line copied from allauth site
+    'django.contrib.sites',  # From this line copied from allauth site Installation page
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -61,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates'),  # These 2 lines add both templates dir & allauth dir
             os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS': True,
