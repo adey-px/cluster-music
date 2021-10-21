@@ -1,5 +1,5 @@
 body {
-    background: blueviolet;
+    background: black;
 }
 
 .card-text {
@@ -9,4 +9,9 @@ body {
 
 .main-header {
     margin-bottom: 100px;
+}
+
+.list-group-item {
+    width: 15%;
+    height: 100px;
 }
