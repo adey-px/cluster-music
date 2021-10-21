@@ -7,11 +7,10 @@ body {
     font-size: larger;
 }
 
-.main-header {
-    margin-bottom: 100px;
+.list-group-item {
+    width: 100%;
 }
 
-.list-group-item {
-    width: 15%;
-    height: 100px;
+.contact {
+    padding-top: 450px;
 }

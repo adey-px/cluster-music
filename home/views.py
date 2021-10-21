@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Audio
+from .models import Audio
 
 # Create your views here.
 

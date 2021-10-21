@@ -9,7 +9,7 @@ class Audio(models.Model):
     title = models.CharField(max_length=20, blank=False, null=False)
     artist = models.CharField(max_length=20, blank=False, null=False)
     song = models.FileField(blank=False, null=False)
-    label = models.ImageField(blank=True, null=True)
+    label = models.ImageField()
     link = models.CharField(max_length=250, blank=True, null=True)
     duration = models.CharField(max_length=30)
 
