@@ -1,16 +1,16 @@
+/* Set site body background color */
 body {
     background: black;
 }
 
-.card-text {
-    color: blueviolet;
-    font-size: larger;
-}
-
+/* Left side navigation panel */
 .list-group-item {
     width: 100%;
 }
 
-.contact {
-    padding-top: 450px;
+.feedback {
+    padding-top: 530px;
 }
+
+/* Home page styling */
+/* Grid cards display audio songs */

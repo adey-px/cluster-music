@@ -4,27 +4,48 @@
 
 {% block content %}
 
-  <div class="container">
-    
-      {% for item in pagination %}
-        <!-- Image label for audio songs -->
-        <div class="#">
-          <img src="{{ item.label.url }}" alt="song_label" />
-        </div>
+<div class="container" style="margin-top: 100px;">
+  <div class="row">
+    <!-- List group buttons on left side -->
+    <div class="col-2">
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active disabled"></a>
+        <a href="{% url 'home' %}" class="list-group-item list-group-item-action">Home</a>
+        <a href="{% url 'now_playing' %}" class="list-group-item list-group-item-action">Now Playing</a>
+        {% if request.user.is_authenticated %}
+          <a href="#" class="list-group-item list-group-item-action">My Music</a>
+          <a href="#" class="list-group-item list-group-item-action">Saved</a>
+        {% endif %}
+        <a href="#" class="list-group-item list-group-item-action">History</a>
+        <a href="#" class="list-group-item list-group-item-action">FAQ</a>
+        <a href="#" class="list-group-item list-group-item-action feedback disabled" tabindex="-1" aria-disabled="true"></a>
+        <a href="#" class="list-group-item list-group-item-action">Feedback</a>
+        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true"></a>
+      </div>
+    </div>
 
+    <!-- Grid cards to display audio songs -->
+    <div class="col-10">
+
+      {% for item in pagination %}
         <!-- Audio songs title & artist name -->
         <div class="#">
-          <h1>{{ item.title }}</h1>
-          <h3>{{ item.artist }}</h3>
+          <h4 class="text-light">{{ item.title }}</h4>
+          <h6 class="text-danger">{{ item.artist }}</h6>
+        </div>
+        
+        <!-- Image label for audio songs -->
+        <div class="#" style="padding-bottom: 50px;">
+          <img src="{{ item.label.url }}" class="mx-auto d-block" alt="song_label" />
         </div>
 
         <!-- Previous & next buttons of songs pages -->
-        <div class="text-center">
+        <div class="text-center" style="padding-bottom: 50px;">
           <a href="{% if pagination.has_previous %}?page={{ pagination.previous_page_number }}{% endif %}">
             <i class="fa fa-step-backward fa-2x"></i>
-          </a> 
-          
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+          </a>
+
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
           <a href="{% if pagination.has_next %}?page={{ pagination.next_page_number }} {% endif %}">
             <i class="fa fa-step-forward fa-2x"></i>
@@ -34,12 +55,15 @@
         <!-- Audio songs fetched from db with play fucntionality in script.js file -->
         <div class="mx-auto">
           <audio class="player mx-auto" style="width: 70%;">
-            <source src="{% if item.song %}{{item.song.url}} {% else %} {{item.link}} {% endif %}"
-              type="audio/mp3" />
+            <source src="{% if item.song %}{{item.song.url}} {% else %} {{item.link}} {% endif %}" type="audio/mp3" />
           </audio>
         </div>
       {% endfor %}
 
+    </div>
   </div>
+</div>
+
+    
 
 {% endblock %}
