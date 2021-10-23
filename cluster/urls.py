@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),  # This line copied from Allauth site Installation page
-    path('', include('home.urls')),  # Home page/app url
+    path('', include('home.urls')),  # Home app url for home page
+    path('music/', include('music.urls')),  # All urls in music app
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

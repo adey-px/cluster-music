@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Audio
+from music.models import Audio
 
 # Create your views here.
 
 
 def index(request):
-    """ A view that renders home page """
+    """ A view that renders home page with all audio songs """
     songs = Audio.objects.all()
 
     context = {

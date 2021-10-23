@@ -18,6 +18,7 @@
     <!-- External core links - Bootstrap CSS first, jQuery, Popper.js, then Bootstrap JS from Bootstrap page -->
     {% block corecss %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -29,6 +30,8 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js"></script>
+        <script src="{% static 'js/script.js' %}"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -80,10 +83,12 @@
                                 </a>
                                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
                                     {% if request.user.is_authenticated %}
-                                    {% if request.user.is_superuser %}
-                                        <a href="" class="dropdown-item">Product Management</a>
-                                    {% endif %}
+                                        {% if request.user.is_superuser %}
+                                            <a href="" class="dropdown-item">Product Management</a>
+                                        {% endif %}
                                         <a href="" class="dropdown-item">My Profile</a>
+                                        <a href="" class="dropdown-item">Upload Audio</a>
+                                        <a href="" class="dropdown-item">Upgrade to Premium</a>
                                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                                     {% else %}
                                         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
