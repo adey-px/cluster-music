@@ -29,23 +29,22 @@
 
       {% for item in pagination %}
         <!-- Audio songs title & artist name -->
-        <div class="#">
-          <h4 class="text-light">{{ item.title }}</h4>
-          <h6 class="text-danger">{{ item.artist }}</h6>
+        <div class="#" style="padding-bottom: 20px;">
+          <h6 class="text-light text-center">{{ item.title }} - {{ item.artist }}</h6>
         </div>
         
         <!-- Image label for audio songs -->
-        <div class="#" style="padding-bottom: 50px;">
-          <img src="{{ item.label.url }}" class="mx-auto d-block" alt="song_label" />
+        <div class="#" style="padding-bottom: 20px;">
+          <img src="{{ item.label.url }}" class="mx-auto d-block img-fluid" alt="song_label" />
         </div>
 
         <!-- Previous & next buttons of songs pages -->
-        <div class="text-center" style="padding-bottom: 50px;">
+        <div class="text-center" style="padding-bottom: 30px;">
           <a href="{% if pagination.has_previous %}?page={{ pagination.previous_page_number }}{% endif %}">
             <i class="fa fa-step-backward fa-2x"></i>
           </a>
 
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
           <a href="{% if pagination.has_next %}?page={{ pagination.next_page_number }} {% endif %}">
             <i class="fa fa-step-forward fa-2x"></i>
