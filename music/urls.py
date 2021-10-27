@@ -3,5 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('now_playing/', views.now_playing, name='now_playing'),
+    path('playing/', views.now_playing, name='now_playing'),
+    path('upload/', views.upload_audio, name='upload_audio'),
 ]

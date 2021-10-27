@@ -17,3 +17,9 @@ def now_playing(request):
         }
 
     return render(request, 'music/now_playing.html', context)
+
+
+def upload_audio(request):
+    """ A view that uploads audio songs into db """
+
+    return render(request, 'music/upload_audio.html')

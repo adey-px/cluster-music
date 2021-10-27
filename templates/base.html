@@ -89,7 +89,7 @@
                                             <a href="" class="dropdown-item">Product Management</a>
                                         {% endif %}
                                         <a href="" class="dropdown-item">My Profile</a>
-                                        <a href="" class="dropdown-item">Upload Audio</a>
+                                        <a href="{% url 'upload_audio' %}" class="dropdown-item">Upload Audio</a>
                                         <a href="" class="dropdown-item">Upgrade to Premium</a>
                                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                                     {% else %}

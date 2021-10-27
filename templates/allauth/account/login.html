@@ -34,7 +34,8 @@
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
   {% endif %}
 
-  <!-- Login form by Allauth. Note {{ form|crispy }} replaces default {{ form.as_p }} -->
+  <!-- Login form by Allauth. Note use of installed crispy form {{ form|crispy }} to replace 
+    the default form {{ form.as_p }} wc renders form as paragraph -->
   <form class="login" method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
     {{ form|crispy }}
