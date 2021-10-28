@@ -11,10 +11,12 @@
                     <a href="#" class="list-group-item list-group-item-action active disabled"></a>
                     <a href="{% url 'home' %}" class="list-group-item list-group-item-action">Home</a>
                     <a href="{% url 'now_playing' %}" class="list-group-item list-group-item-action">Now Playing</a>
+
                     {% if request.user.is_authenticated %}
-                    <a href="#" class="list-group-item list-group-item-action">My Music</a>
-                    <a href="#" class="list-group-item list-group-item-action">Saved</a>
+                        <a href="#" class="list-group-item list-group-item-action">My Music</a>
+                        <a href="#" class="list-group-item list-group-item-action">Saved</a>
                     {% endif %}
+
                     <a href="#" class="list-group-item list-group-item-action">History</a>
                     <a href="#" class="list-group-item list-group-item-action">FAQ</a>
                     <a href="#" class="list-group-item list-group-item-action feedback disabled" tabindex="-1"
@@ -27,10 +29,67 @@
 
             <!-- Grid cards to display audio songs -->
             <div class="col-10">
+                <div class="row">
+                    <div class="col-12 col-md-12">
 
-                
+                        {% if messages %}
+                        <ul class="text-light">
+                            {% for message in messages %}
+                            {{ message }}
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                        <hr>
+                        <h2 class="logo-font mb-4 text-light text-center">
+                            Upload Audio
+                        </h2>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="card mb-3" style="width: 100%;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="https://gyla.ge/files/news/%E1%83%A4%E1%83%9D%E1%83%9C%E1%83%93%E1%83%98/2021/%E1%83%9C%E1%83%98%E1%83%A3%E1%83%A1%E1%83%9A%E1%83%94%E1%83%97%E1%83%94%E1%83%A0%E1%83%94%E1%83%91%E1%83%98/headphone_audio.jpg"
+                                        class="card-img" alt="audio_image">
+                                    <img src="https://www.audison.eu/wp-content/uploads/2017/07/audison-hires-audio-1.jpg" class="card-img" alt="audio_image">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Fields marked * are compulsory</h6>
+
+                                        <form method="POST" action="{% url 'upload_audio' %}" class="form mb-2" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            {% for field in form %}
+                                                {% if field.name != 'image' %}
+                                                    {{ field | as_crispy_field }}
+                                                {% else %}
+                                                    {{ field }}
+                                                {% endif %}
+                                            {% endfor %}
+                                            <div class="text-right">
+                                                <a class="btn btn-outline-black rounded-0"
+                                                    href="{% url 'home' %}">
+                                                    Cancel
+                                                </a>
+                                                <button class="btn btn-black rounded-0" type="submit">
+                                                    Add Audio
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
 {% endblock %}
