@@ -112,14 +112,34 @@
        {% block extra_header %}
        {% endblock %}
 
+       <!-- Toast messages to display from views.py, based on django message levels.
+        Refer below for js code that calls on all .toast classes and show them -->
        {% if messages %}
-            <div class="message-container"></div>
-       {% endif %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
        {% block content %}
        {% endblock %}
 
+       <!-- Bootstrap js to show toast messages on templates -->
        {% block postloadjs %}
+       <script>
+           $('.toast').toast('show');
+       </script>
        {% endblock %}
 
     </body>

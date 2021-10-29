@@ -27,7 +27,9 @@ def now_playing(request):
 def upload_audio(request):
     """ A view that uploads audio songs into db """
 
-    # Note capture of .files to get in the images of audio uploaded
+    # Note capture of .files to get in the images of the audio uploaded.
+    # Based on django message levels in base.html, message.success, .error etc
+    # .....will select template to use from includes/toasts directory
     if request.method == 'POST':
         form = AudioForm(request.POST, request.FILES)
         if form.is_valid():
@@ -36,6 +38,7 @@ def upload_audio(request):
             return redirect('upload_audio')
         else:
             messages.error(request, 'Failed to add audio. Please try again.')
+            return redirect('upload_audio')
     else:
         form = AudioForm()
 
