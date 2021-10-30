@@ -1,0 +1,17 @@
+<!-- Sidenav on left side of all templates inserted using include syntax -->
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active disabled"></a>
+    <a href="{% url 'home' %}" class="list-group-item list-group-item-action">Home</a>
+    <a href="{% url 'now_playing' %}" class="list-group-item list-group-item-action">Now Playing</a>
+
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'my_music' %}" class="list-group-item list-group-item-action">My Music</a>
+      <a href="#" class="list-group-item list-group-item-action">Saved</a>
+    {% endif %}
+    
+    <a href="#" class="list-group-item list-group-item-action">History</a>
+    <a href="#" class="list-group-item list-group-item-action">FAQ</a>
+    <a href="#" class="list-group-item list-group-item-action feedback disabled" tabindex="-1" aria-disabled="true"></a>
+    <a href="#" class="list-group-item list-group-item-action">Feedback</a>
+    <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true"></a>
+  </div>

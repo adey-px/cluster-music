@@ -1,6 +1,6 @@
 /* Set site body background color */
 body {
-    background: black;
+    background: rgb(85, 78, 78);
 }
 
 /* Left side navigation panel */
@@ -179,4 +179,9 @@ body {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.image-size {
+    max-width: 64px;
+    max-height: 64px;
 }

@@ -16,9 +16,12 @@ def now_playing(request):
     paging = request.GET.get('page')
     pagination = interface.get_page(paging)
 
+    songs = Audio.objects.all()
+
     context = {
-        "pagination": pagination
-        }
+        "pagination": pagination,
+        "songs": songs
+    }
 
     return render(request, 'music/now_playing.html', context)
 
@@ -43,9 +46,28 @@ def upload_audio(request):
         form = AudioForm()
 
     template = 'music/upload_audio.html'
-
     context = {
         'form': form
     }
 
     return render(request, template, context)
+
+
+# View for storing user audios to individual user account
+def my_music(request):
+    """ A view that stores audio uploaded in user account """
+
+    if request.method == 'POST':
+        form = AudioForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            request.session['form'] = 'user_audio'
+    else:
+        form = AudioForm()
+
+    user_audio = request.session.get('form')
+    context = {
+        'user_audio': user_audio
+    }
+
+    return render(request, 'music/my_music.html', context)

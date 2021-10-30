@@ -3,42 +3,56 @@
 <!doctype html>
 <html lang="en">
 
-  <head>
-    <!-- Required meta tags -->
-    {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% endblock %}
+    <head>
+        <!-- Required meta tags -->
+        {% block meta %}
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% endblock %}
 
-    {% block extra_meta %}
-    {% endblock %}
-    <!-- Required meta tags ends -->
+        {% block extra_meta %}
+        {% endblock %}
+        <!-- Required meta tags ends -->
 
-    <!-- External core links - Bootstrap CSS first, jQuery, Popper.js, then Bootstrap JS from Bootstrap page -->
-    {% block corecss %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% endblock %}
+        <!-- External core links - Bootstrap CSS first, jQuery, Popper.js, then Bootstrap JS from Bootstrap page -->
+        {% block corecss %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+                integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css"
+                rel="stylesheet" />
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
+        {% block extra_css %}
+        {% endblock %}
 
-    {% block corejs %}
-        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js"></script>
-        <script src="{% static 'js/script.js' %}"></script>
-    {% endblock %}
+        {% block corejs %}
+            <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js"></script>
+            <script src="{% static 'js/script.js' %}"></script>
+        {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
-    <!-- End of External core links - Bootstrap CSS first, jQuery, Popper.js, then Bootstrap JS from Bootstrap page -->
+        {% block extra_js %}
+        {% endblock %}
+        <!-- End of External core links - Bootstrap CSS first, jQuery, Popper.js, then Bootstrap JS from Bootstrap page -->
 
-    <title>Cluster Music {% block extra_title %}{% endblock %}</title>
+        <title>
+            Cluster Music
+
+            {% block extra_title %}
+            {% endblock %}
+        </title>
+
     </head>
 
     <body>
@@ -100,7 +114,6 @@
                                         <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                                     {% endif %}
                                 </div>
-                                
                             </li>
                         </ul>
                     </div>
@@ -115,23 +128,24 @@
        <!-- Toast messages to display from views.py, based on django message levels.
         Refer below for js code that calls on all .toast classes and show them -->
        {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
-    {% endif %}
+            <div class="message-container">
+                {% for message in messages %}
+                    {% with message.level as level %}
+                        {% if level == 40 %}
+                            {% include 'includes/toasts/error.html' %}
+                        {% elif level == 30 %}
+                            {% include 'includes/toasts/warning.html' %}
+                        {% elif level == 25 %}
+                            {% include 'includes/toasts/success.html' %}
+                        {% else %}
+                            {% include 'includes/toasts/info.html' %}
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        {% endif %}
 
+       <!-- Content from templates that extend this base.html, go in here -->
        {% block content %}
        {% endblock %}
 
