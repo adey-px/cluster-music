@@ -13,7 +13,7 @@
       </div>
 
       <!-- Grid cards to display audio songs -->
-      <div class="col-8">
+      <div class="col-7">
 
         {% for item in pagination %}
           <!-- Audio songs title & artist name -->
@@ -52,21 +52,24 @@
       </div>
 
       <!-- Right sidebar to display media list for quick access while playing audios -->
-      <div class="col-2">
-        
-        <ul class="list-unstyled" style="width: 100%;">
+      <div class="col-3">
+        <ul class="list-unstyled">
+
           {% for item in songs %}
             <a href="{% url 'now_playing' %}">
               <li class="media">
-                <img src="{{ MEDIA_URL }}{{ item.label }}" class="mr-3 image-size" alt="...">
+                <img src="{{ MEDIA_URL }}{{ item.label }}" class="mr-3 audio-label" alt="audio label">
                 <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-light">List-based media object</h6>
+                  <small class="mt-0 mb-1 text-light">
+                    {{ item.title }} - {{ item.artist }}
+                  </small> <br>
+                  <small>Mp3 format audio song</small>
                 </div>
               </li>
             </a>
           {% endfor %}
-        </ul>
 
+        </ul>
       </div>
     </div>
   </div>

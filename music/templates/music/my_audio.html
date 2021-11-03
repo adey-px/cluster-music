@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+  <div class="container-fluid" style="margin-top: 100px;">
+    <div class="row">
+      
+      <!-- List group buttons on left side inserted thru includes directory -->
+      <div class="col-2">
+        {% include 'includes/sidenav/sidenav.html' %}
+      </div>
+
+      <!-- Grid cards to display audio songs -->
+      <div class="col-10">
+
+        <div class="card-columns">
+          {% for item in user_audio %}
+            <a href="{% url 'now_playing' %}">
+              <div class="card">
+                <img src="{{ MEDIA_URL }}{{ item.label }}" class="card-img-top" alt="audio_label">
+                <div class="card-body">
+                  <small class="card-title">{{ item.title }}</small> </br>
+                  <small class="card-title text-dark">{{ item.artist }}</small>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+              {{ user.userprofile.audios }}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

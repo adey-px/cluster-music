@@ -12,6 +12,25 @@ body {
     padding-top: 530px;
 }
 
+.list-group-item-dark {
+    background: rgb(128, 117, 117);
+    color: #fff;
+}
+
+/* Set properties for media list on now_playing page */
+.media {
+    margin-bottom: 15px;
+}
+
+.audio-label {
+    max-width: 64px;
+    height: fit-content;
+}
+
+.list-unstyled a li:hover {
+    background: rgb(141, 133, 133);
+}
+
 /* Allauth account/base.html styling */
 .account-base {
     background: white;
@@ -122,10 +141,6 @@ body {
     z-index: 99999999999;
 }
 
-.custom-toast {
-    overflow: visible;
-}
-
 .toast-capper {
     height: 2px;
 }
@@ -179,9 +194,4 @@ body {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
-}
-
-.image-size {
-    max-width: 64px;
-    max-height: 64px;
 }

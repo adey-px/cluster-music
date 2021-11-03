@@ -23,4 +23,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),  # This line copied from Allauth site Installation page
     path('', include('home.urls')),  # Home app url for home page
     path('music/', include('music.urls')),  # All urls in music app
+    path('profiles/', include('profiles.urls')),  # All urls in music app
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
