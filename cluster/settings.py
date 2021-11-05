@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 # VERSION INFO
 # ORIGINALLY INSTALLED WITH 3.2.8
-# CURRENT DJANGO VERSION IS 3.0.1 
+# CURRENT DJANGO VERSION IS 3.0.1
 
 import os
 from pathlib import Path
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',  # From this line copied from allauth site Installation page
+    'django.contrib.sites',  # From this line copied from allauth site page
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

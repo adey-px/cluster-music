@@ -11,16 +11,22 @@ from .forms import AudioForm
 
 
 # View for playing audio songs existing in db
-def now_playing(request):
+def now_playing(request, audio_id):
     """ A view that plays/pauses audio songs from db """
 
-    interface = Paginator(Audio.objects.all(), 1)
+    # Get each audio by id to open it when an audio file is clicked
+    audio = get_object_or_404(Audio, pk=audio_id)
+
+    # Get each audio by id into paginator - one audio per page
+    interface = Paginator(Audio.objects.filter(pk=audio_id), 1)
     paging = request.GET.get('page')
     pagination = interface.get_page(paging)
 
+    # Get all audios from db to page right sidebar
     songs = Audio.objects.all()
 
     context = {
+        "audio": audio,
         "pagination": pagination,
         "songs": songs
     }
@@ -62,23 +68,24 @@ def add_audio(request):
 
 # View for displaying audio added by user in their own account
 def my_audio(request):
-    """ A view that displays audio uploaded in user account """
+    """ A view that displays audio. Get user profile and use it
+    to filter all audio objects in the Audio model """
 
-    profile = get_object_or_404(UserProfile, user=request.user)
+    # Get each audio by id to open it when an audio file is clicked
 
-    user_audio = request.session.get('audios')
+    user_profile = UserProfile.objects.get(user=request.user)
+    audio = Audio.objects.filter(published_by=user_profile)
 
     context = {
-        'user_audio': user_audio,
-        'profile': profile
+        'user_audio': audio
     }
 
     return render(request, 'music/my_audio.html', context)
 
 
-# View for editing uploaded audio in individual user account
-def adit_audio(request):
-    """ A view that deletes audio uploaded in user account """
+# View for editing uploaded audio by inidividual user
+def edit_audio(request):
+    """ A view that edits audio """
 
     return render(request, 'music/edit_audio.html')
 
@@ -92,13 +99,13 @@ def delete_audio(request):
 
 # View for getting saved audio to individual user account
 def saved_audio(request):
-    """ A view that saves favourite audio into user account """
+    """ A view that saves audio """
 
     return render(request, 'music/saved_audio.html')
 
 
 # View for getting play history to individual user account
 def history(request):
-    """ A view that gets play history into user account """
+    """ A view that gets play history """
 
     return render(request, 'music/history.html')

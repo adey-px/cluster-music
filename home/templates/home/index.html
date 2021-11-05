@@ -16,14 +16,14 @@
         <div class="card-deck">
           <div class="row row-cols-1 row-cols-md-4">
 
-            {% for item in songs %}
+            {% for audio in songs %}
               <div class="col mb-2">
-                <a href="{% url 'now_playing' %}" class="text-decoration-none">
+                <a href="{% url 'now_playing' audio.id %}" class="text-decoration-none">
                   <div class="card h-100">
-                    <img src="{{ MEDIA_URL }}{{ item.label }}" class="card-img-top" alt="song_label">
+                    <img src="{{ MEDIA_URL }}{{ audio.label }}" class="card-img-top" alt="song_label">
                     <div class="card-body text-center">
-                      <small class="card-title">{{ item.title }}</small> </br>
-                      <small class="card-title text-dark">{{ item.artist }}</small>
+                      <small class="card-title">{{ audio.title }}</small> </br>
+                      <small class="card-title text-dark">{{ audio.artist }}</small>
                     </div>
                   </div>
                 </a>

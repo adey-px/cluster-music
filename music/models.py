@@ -10,8 +10,8 @@ from profiles.models import UserProfile
 # Model for adding or uploading audio to db, note attached UserProfile
 class Audio(models.Model):
     """ A model that adds Audio music songs to db. UserProfile model from
-    profile app, is applied as ForeignKey and as done in that model,
-    on_delete=models keeps user activity in db, even after deleting the user
+    profile app, is applied as ForeignKey. models.set_null keeps user
+    activity in db, even after deleting the user
     """
 
     title = models.CharField(max_length=20, blank=False, null=False)

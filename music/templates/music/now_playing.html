@@ -15,17 +15,17 @@
       <!-- Grid cards to display audio songs -->
       <div class="col-7">
 
-        {% for item in pagination %}
+        {% for page in pagination %}
           <!-- Audio songs title & artist name -->
           <div class="#" style="padding-bottom: 20px;">
             <h6 class="text-light text-center">
-              {{ item.title }} - {{ item.artist }}
+              {{ page.title }} - {{ page.artist }}
             </h6>
           </div>
           
           <!-- Image label for audio songs -->
           <div class="#" style="padding-bottom: 20px;">
-            <img src="{{ item.label.url }}" class="mx-auto d-block img-fluid" alt="song_label" />
+            <img src="{{ page.label.url }}" class="mx-auto d-block img-fluid" alt="song_label" />
           </div>
 
           <!-- Previous & next buttons of songs pages -->
@@ -44,7 +44,7 @@
           <!-- Audio songs fetched from db with play fucntionality in script.js file -->
           <div class="mx-auto">
             <audio class="player mx-auto" style="width: 70%;">
-              <source src="{% if item.song %}{{item.song.url}} {% else %} {{item.link}} {% endif %}" type="audio/mp3" />
+              <source src="{% if page.song %}{{page.song.url}} {% else %} {{page.link}} {% endif %}" type="audio/mp3" />
             </audio>
           </div>
         {% endfor %}
@@ -55,13 +55,13 @@
       <div class="col-3">
         <ul class="list-unstyled">
 
-          {% for item in songs %}
-            <a href="{% url 'now_playing' %}">
+          {% for audio in songs %}
+            <a href="{% url 'now_playing' audio.id %}">
               <li class="media">
-                <img src="{{ MEDIA_URL }}{{ item.label }}" class="mr-3 audio-label" alt="audio label">
+                <img src="{{ MEDIA_URL }}{{ audio.label }}" class="mr-3 audio-label" alt="audio label">
                 <div class="media-body">
                   <small class="mt-0 mb-1 text-light">
-                    {{ item.title }} - {{ item.artist }}
+                    {{ audio.title }} - {{ audio.artist }}
                   </small> <br>
                   <small>Mp3 format audio song</small>
                 </div>

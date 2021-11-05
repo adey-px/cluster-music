@@ -8,8 +8,8 @@ from django.dispatch import receiver
 
 # When user signup, create one profile for each user using - OneToOneField
 class UserProfile(models.Model):
-    """ A user profile model for capturing summary of user activity
-    on_delete=models keeps user activity in db, even after deleting the user
+    """ A user profile model for capturing summary of user activity.
+    models.cascade deletes user profile when user is deleted
     """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -23,9 +23,9 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
-    Each time user object is saved, automatically create or update user profile
+    As user registers/saves, automatically create or update user profile
     if already existed. All users created b4 creating the UserProfile model
-    won't be able to login again. Comment out d lines below to allow them login.
+    won't able to login again. Comment out d lines below to allow them login.
     """
     if created:
         UserProfile.objects.create(user=instance)
