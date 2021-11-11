@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'home',
     'music',
     'profiles',
+    'checkout',
     'crispy_forms',
 ]
 
@@ -176,3 +177,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Stripe keys
+STRIPE_PUBLIC_KEY = "pk_test_51JimaUI0jEXLK2JC0egYHeDwcoD1WLBc9tsij3KMOuPFmKquTtBta3n3NnCOMCKQtl428KwsVkag069QeAzNDbmw00FyGHSzoK"
+STRIPE_SECRET_KEY = "sk_test_51JimaUI0jEXLK2JCwGqPv9OxnqmXpB99fbOqCIDfqybG0JqFUj449vM6BMseKrk5PB7rzoTdOk1iyFBtCs22ktR400O1b4aiVN"

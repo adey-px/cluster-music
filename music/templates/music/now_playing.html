@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
 
   <div class="container-fluid" style="margin-top: 100px;">
@@ -32,7 +31,7 @@
 
             <!-- Audio songs fetched from db with play fucntionality in script.js file -->
             <div class="mx-auto">
-              <audio class="player mx-auto" style="width: 70%;">
+              <audio class="player mx-auto" style="width: 45%;">
                 <source src="{% if audio.song %}{{audio.song.url}} {% else %} {{audio.link}} {% endif %}" type="audio/mp3" />
               </audio>
             </div>
@@ -52,7 +51,7 @@
 
             <!-- Audio songs fetched from db with play functionality in script.js file -->
             <div class="mx-auto">
-              <audio class="player mx-auto" style="width: 30%;">
+              <audio class="player mx-auto" style="width: 45%;">
                 <source src="{% if audio.song %}{{audio.song.url}} {% else %} {{audio.link}} {% endif %}" type="audio/mp3" />
               </audio>
             </div>
@@ -98,8 +97,3 @@
   </div>
 
 {% endblock %}
-
-
-if item = now_playing
- display the video and play it
-otherwise, just display the video

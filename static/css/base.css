@@ -3,6 +3,11 @@ body {
     background: rgb(85, 78, 78);
 }
 
+.audio-card {
+    padding-right: 0;
+    padding-left: 0;
+}
+
 /* Left side navigation panel */
 .list-group-item {
     width: 100%;

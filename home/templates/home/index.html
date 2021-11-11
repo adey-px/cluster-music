@@ -23,21 +23,44 @@
                   <div class="card h-100">
                     <img src="{{ MEDIA_URL }}{{ audio.label }}" class="card-img-top" alt="song_label">
 
-                    <div class="card-body">
+                    <div class="card-body audio-card">
                       <small class="card-title">{{ audio.title }}</small>
                       
-                      <ul style="list-style-type: none;" class="inline-block float-right">
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
-                            role="button" aria-haspopup="true" aria-expanded="false"></a>
-                          <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#two">Share <i class="fas fa-share-square float-right"></i></a>
-                            <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#three">Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i></a>
-                          </div>
-                        </li>
-                      </ul>
-                      
+                      {% if request.user.is_authenticated %}
+                        <ul style="list-style-type: none;" class="inline-block float-right">
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
+                                role="button" aria-haspopup="true" aria-expanded="false"></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#two">Share <i class="fas fa-share-square float-right"></i></a>
+                                <div role="separator" class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="{% url 'upgrade' %}">
+                                    Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i>
+                                </a>
+
+                            </div>
+                            </li>
+                        </ul>
+
+                        {% else %}
+                        <ul style="list-style-type: none;" class="inline-block float-right">
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
+                                role="button" aria-haspopup="true" aria-expanded="false"></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#two">Share <i class="fas fa-share-square float-right"></i></a>
+                                <div role="separator" class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="{% url 'account_login' %}">
+                                    Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i>
+                                </a>
+
+                            </div>
+                            </li>
+                        </ul>
+                      {% endif %}
+
                       <br/>
                       <small class="card-title text-dark">{{ audio.artist }}</small>
                     </div>

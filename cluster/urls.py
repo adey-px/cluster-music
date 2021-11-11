@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('home.urls')),  # Home app url for home page
     path('music/', include('music.urls')),  # All urls in music app
     path('profiles/', include('profiles.urls')),  # All urls in music app
+    path('checkout/', include('checkout.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
