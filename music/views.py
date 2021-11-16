@@ -130,14 +130,14 @@ def delete_audio(request, audio_id):
     return render(request, 'music/my_audio.html')
 
 
-# View for getting saved audio to individual user account
+# View for saving favourite audio from db to user account
 def saved_audio(request):
     """ A view that saves audio """
 
     return render(request, 'music/saved_audio.html')
 
 
-# View for getting play history to individual user account
+# View for displaying play history to user account
 def history(request):
     """ A view that gets play history """
 

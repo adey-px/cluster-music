@@ -32,7 +32,7 @@
             <!-- Audio songs fetched from db with play fucntionality in script.js file -->
             <div class="mx-auto">
               <audio class="player mx-auto" style="width: 45%;">
-                <source src="{% if audio.song %}{{audio.song.url}} {% else %} {{audio.link}} {% endif %}" type="audio/mp3" />
+                <source src="{{audio.song.url}} {% else %} {{audio.link}} {% endif %}" type="audio/mp3" />
               </audio>
             </div>
           
