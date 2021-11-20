@@ -32,29 +32,36 @@
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
                                 role="button" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#two">Share <i class="fas fa-share-square float-right"></i></a>
-                                <div role="separator" class="dropdown-divider"></div>
-
+                                <a class="dropdown-item" href="{% url 'save_audio' audio.id %}">
+                                  Save <i class="far fa-save float-right"></i>
+                                </a>
+                                <a class="dropdown-item" href="#share_audio">
+                                  Share <i class="fas fa-share-square float-right"></i>
+                                </a>
                                 <a class="dropdown-item" href="{% url 'upgrade' %}">
-                                    Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i>
+                                  Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i>
                                 </a>
 
                             </div>
                             </li>
                         </ul>
-
+                       
                         {% else %}
                         <ul style="list-style-type: none;" class="inline-block float-right">
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
                                 role="button" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#two">Share <i class="fas fa-share-square float-right"></i></a>
-                                <div role="separator" class="dropdown-divider"></div>
-
-                                <a class="dropdown-item" href="{% url 'account_login' %}">
-                                    Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i>
-                                </a>
+                              <a class="dropdown-item" href="{% url 'account_login' %}">
+                                Save <i class="far fa-save float-right"></i>
+                              </a>
+                              <a class="dropdown-item" href="{% url 'account_login' %}">
+                                Share <i class="fas fa-share-square float-right"></i>
+                              </a>
+                               
+                               <a class="dropdown-item" href="{% url 'account_login' %}">
+                                Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i>
+                              </a>
 
                             </div>
                             </li>

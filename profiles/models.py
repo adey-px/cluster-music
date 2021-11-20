@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+# from music.models import Audio
+
 
 # Create your models here.
 
@@ -12,7 +14,11 @@ class UserProfile(models.Model):
     models.cascade deletes user profile when user is deleted
     """
 
+    # Get each user who registers using the imported User model above
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    # Create variable to get audio saved by registered users
+    fav_audio = models.ManyToManyField("music.Audio")
 
     # At login, return user's username on designated page -eg- profile.html
     def __str__(self):

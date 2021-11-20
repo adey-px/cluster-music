@@ -130,11 +130,35 @@ def delete_audio(request, audio_id):
     return render(request, 'music/my_audio.html')
 
 
-# View for saving favourite audio from db to user account
-def saved_audio(request):
-    """ A view that saves audio """
+# View for saving favourite audio to fav_audio field in userprofile
+def save_audio(request, audio_id):
+    """ A view that saves favourite audio """
 
-    return render(request, 'music/saved_audio.html')
+    # Get audio from db and userprofile from Profile model
+    audio = get_object_or_404(Audio, pk=audio_id)
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    # Add/Save the audio inside fav_audio field in userprofile
+    user_profile.fav_audio.add(audio)
+    messages.success(request, 'Your favourite audio has been saved')
+
+    # After adding/saving, redirect to home page
+    return redirect(reverse('home'))
+
+
+# View for displaying saved favourite audio in user account
+def view_saved_audio(request):
+
+    # Get current userprofile & all audio in their fav_audio field
+    user_profile = UserProfile.objects.get(user=request.user)
+    favourite = user_profile.fav_audio.all()
+
+    # Pass it to context and render it in template
+    context = {
+        'favourite': favourite,
+    }
+
+    return render(request, 'music/saved_audio.html', context)
 
 
 # View for displaying play history to user account
