@@ -1,108 +1,141 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+## 1.0 Project Name: Cluster Music
+The aim of the project is to develop a custom application for user to listen to audio music, similar to existing popular audio apps like Spotify, Amazon music & YouTube music among others. The application consists of a home page displaying audio and a search bar where user can search for audio music to play. There is also a navigation panel on the left side and it appears on all pages of the site.
 
-Welcome adey-px,
+The project is deployed to Heroku on ............
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## 2.0 UX
+The web Application is developed for any user who enjoys playing audio music for relaxation or any other reason.
 
-## Gitpod Reminders
+### 2.1 User stories
+As a user, I want to:
+1. click on any audio to play it 
+2. search for audio to play in the search bar
+3. create an account and login successfully 
+4. upload my own audio to the site to allow other users to listen to it
+5. view list of my own audios and be able to edit or delete them
+6. save favourite audio as a playlist
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+As a Pro user, I want to:
+1. download audio from the site to my computer
 
-`python3 -m http.server`
+### 2.2 Wireframes
+In order to bring the idea of this project to life, wireframes were produced with the use of marker & paper. The folder named "wireframes" has been uploaded in this project's GitHub repository. The folder contains images of the wireframes designed to show Desktop, Tablet and Mobile views of various pages of the application
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+## 3.0 Features
+### 3.1 Existing Features
+1. The site has top navigation bar having name logo on the right, a search bar at the center and user account account on the left side
+2. The search bar allows user to search for audio to play
+3. The user account icon consists of Register and Login links which allow user to register new account and login existing account respectively
+4. There is also a navigation panel on left side which consists of links that allow user to navigate to inner pages of the site
+5. When user clicks on an audio object, it opens in now_playing page and the audio is played from beginning to end
+6. While audio is playing, it can be paused or fast-forwarded by user
+7. Audio has functionality which allows user to select previous or next audio to play
+8. On now_playing page, there is a right panel which loops over all audio in database. This makes it easy for user to have access to select any audio of their choice to play
+9. Registered user has the previledge to upload their own audio and they can see the list of their audio in "Your Audio" page
+10. Pro user who has made once-off payment using Stripe payment link provided, has the previledge for unlimited download of audio from the site
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### 3.2 Features Left to Implement
+1. To allow user to be able to share audio on Social media platforms and email through button link attached to each audio
+2. To allow authenticated user to see their play history on History page accessible via the History button link located on left panel
+3. To use coding to implement Stripe payment for Pro users rather than the Payment link used due to constraint of project submission time
 
-A blue button should appear to click: _Make Public_,
+### 3.3 Languages and Technologies Used
+1. <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML5:</a>  This project uses HTML5 as the backbone and main markup language.
+2. <a href="https://mdbootstrap.com/docs/b4/jquery/" target="_blank">Material Design:</a> It uses Material Design for Bootstrap 4 Standard as Frontend Framework to design its layout and user interface.
+2. <a href="https://en.wikipedia.org/wiki/CSS" target="_blank">CSS3:</a> The project uses CSS3 for additional styling.
+4. <a href="https://ianlunn.github.io/Hover/" target="_blank">Hover.CSS:</a> It uses Hover.css for button hover.
+5. <a href="https://fontawesome.com/" target="_blank">Font Awesome:</a> It uses Font Awesome for form input fields and button icons.
+6. <a href="https://www.javascript.com/" target="_blank">JavaScript:</a> It uses vanilla JavaScript for audio player functionality
+7. <a href="https://www.djangoproject.com/" target="_blank">Django:</a>  It uses Django framework based on Python Language. The Django technology is to develop the site's dynamic content, CRUD Operations, user authentication and other programming functionalities.
 
-Another blue button should appear to click: _Open Browser_.
+8. <a href="https://www.mongodb.com/" target="_blank">MongoDB:</a> It uses MongoDB, a Nosql database which stores user data in various collections. The data is manipulated programmatically through CRUD operations.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+9. <a href="https://heroku.com" target="_blank">Heroku:</a> It uses Heorku platform as a Service for deployment to make the application visible and available for the public
 
-To log into the Heroku toolbelt CLI:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## 4.0 Testing
+All the internal and external links including menu items on navigation bar works well and the application looks good on Chrome, Mozilla and Edge browsers. The site is responsive on mobile devices.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### 4.1 Code Validation
+1. HTML codes were tested with <a href="https://validator.w3.org/#validate_by_input" target="_blank">W3C MarkUp Validation Service</a>. The codes returned with no error.
+2. CSS codes were tested with <a href="https://jigsaw.w3.org/css-validator/" target="_blank">W3C CSS Validation Service</a>. The codes returned with no error.
+3. JavaScript codes were tested with <a href="https://jshint.com/" target="_blank">JSHint</a>. The codes returned with no error.
+4. Python codes were tested with <a href="http://pep8online.com/" target="_blank">PEP8</a>. The codes returned with no error.
 
-------
+### 4.2 Testing Responsiveness
+All the pages of this application are well responsive on all devices including dektop, tablet and mobile devices. See images below for results.
+<img src="readme/capture-one.png" alt="responsiveness-result">
+<img src="readme/capture-two.png" alt="responsiveness-result">
+<img src="readme/capture-three.png" alt="responsiveness-result">
+<img src="readme/capture-four.png" alt="responsiveness-result">
+<img src="readme/capture-five.png" alt="responsiveness-result">
 
-## Release History
+### 4.3 Testing Browser Compatibility
+This application is compatible on popular browsers including Chrome, Edge, Safari and Firefox.
+<img src="readme/browser-compatibility.png" alt="browser-compatibility-result"> 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### 4.4 Testing User Story 
+The following user stories were tested for user: 
+1. select an audio and play it successfully 
+2. search for an audio in search bar to play
+3. create an account with email/username and password
+4. Login into their account successfuly
+5. upload audio to the site to allow other users to listen to it
+6. view list of their uploaded audios and be able to edit or delete them
+7. save favourite audio as a playlist
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+The following user story was tested for Pro user:
+1. download audio from the site to my computer successfully
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### 4.5 Testing Existing Features
+1. All the navigation links and buttons on the application work as expected
+2. User can add/upload audio into the database
+3. They can also create/read (play audio), edit/update and delete their audio successfully and these complete CRUD functionalities
+4. All the forms including Register form, Login form and all other forms work as expected
+5. User can search for audio in search bar and click on it to play
+6. They can create account and login sucessfully with their username and password
+7. Authenticated user can  upload audio and view the list of their audio in "Your Audio" page
+8. They can save audio and create a playlist of their favorite audios
+9. They can click forward or backward button to play next or previous audio respectively
+10. They can click to play/pause, fastward or rewind audio on now_playing page
+11. Pro user can download unlimited audio to their personal computer
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### 4.6 Bugs
+While developing this application, I encountered some bugs and fixed them as follow:
+1. When I clicked any audio to play on home page, it always displayed firts audio on the page whereas it supposed to display and play
+the specific audio that I clicked. I fixed this bug by using Coditional Expressions with Case & When, to make the selected audio object
+to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">StackOverflow</a>
+2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. I fixed this bug by using Stripe payment link provided on their website to implement 
+payment for Pro user. 
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+## 5.0 Deployment
+This project is hosted on Heroku using this procedure:
+1. I first set up some important files (requiremnts.txt & Procfile) that Heroku needs to run the App 
+2. At the terminal, I typed pip3 freeze --local > requirements.txt (this file is required to tell Heroku which apps & dependencies are required to runn the App)
+3. I typed echo web: python app.py > Procfile (this file is what helps Heroku to know which file runs the App and how to run it)
+4. I login to heroku, clicked New, Create new app 
+5. I chose GitHub option in order to set up Automatic Deployment from my Repository
+6. I typed & searched the name of my App Repo in space provided and clicked Connect
+7. I clicked on Settings Tab, then clicked on Reveal Config Vars - this is where to securely tell Heroku those required hidden variables
+8. I opened env.py, type all the 5 default environment variables with their values, as they are, but without quotations
+9. I clicked Hide Config Vars, then returned to Deploy Tab
+10. Before Deploy, I returned to my App project, at the Git command Terminal, typeed Git status to see any untracked files/pending changes 
+11. I added requiremnts.txt file and Procfile one by one and push them to GitHub separately
+12. I returned to Heroku and clicked Enable Automatic Deploys
+13. I clicked Deploy Branch, after install complete - I saw the App was successfully deployed to Heroku
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## 6.0 Credits
+### 6.1 Content
+1. This project used Bootstrap 4.4 for its User Interface <a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/">Bootstrap</a> 
+2. Code for main header with Search bar and Django message levels were copied from Code Institute Boutique Ado project
+3. I got idea for JavaScript code to play audio and html code for audio display from <a href="https://www.section.io/engineering-education/how-to-build-a-music-player-using-django/">Onojakpor Ochuko</a> 
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+### 6.2 Media
+The images used for the audio labels were obtained from <a href="images.google.com">Google images</a>
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+### 6.3 Acknowledgement
+I got inspiration for this project from YouTube website and Spotify music app

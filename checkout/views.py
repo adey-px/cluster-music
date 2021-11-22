@@ -13,13 +13,13 @@ def upgrade(request):
 
 
 def checkout(request):
-    """ A view that renders home page with all audio songs """
+    """ A view that  """
 
     return render(request, 'checkout/checkout.html')
 
 
 def checkout_success(request):
-    """ A view that renders home page with all audio songs """
+    """ A view that  """
 
     return render(request, 'checkout/checkout_success.html')
 

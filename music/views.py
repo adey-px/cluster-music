@@ -44,6 +44,8 @@ def add_audio(request):
 
 
 # View for playing audio songs existing in db
+# This view performs 2 functions - logic to play audio and 
+# code to render now_playing template, wc can be separated
 def now_playing(request, audio_id):
     """ A view that plays/pauses audio songs from db """
 
@@ -73,9 +75,12 @@ def now_playing(request, audio_id):
     return render(request, 'music/now_playing.html', context)
 
 
-# View for displaying audio added by user in their own account
+# View for displaying audio added/uploaded by user in their accounts
+# Note - Another way is by saving audio (in add_audio view above) in
+# user_profile.my_audio where my_audio is a field inside the Profile model
+# This avoids published_by in Audio model. Ref to save_audio view below.
 def my_audio(request):
-    """ A view that displays audio. Get user profile and use it
+    """ A view that displays user audio. Get user profile and use it
     to filter all audio objects in the Audio model """
 
     # Get audios from db and filter them by current user profile
@@ -131,6 +136,8 @@ def delete_audio(request, audio_id):
 
 
 # View for saving favourite audio to fav_audio field in userprofile
+# Note - this view is only logic code that carries out a functionality
+# Since it doesn't return any template, it doesn't require context.
 def save_audio(request, audio_id):
     """ A view that saves favourite audio """
 
@@ -142,11 +149,13 @@ def save_audio(request, audio_id):
     user_profile.fav_audio.add(audio)
     messages.success(request, 'Your favourite audio has been saved')
 
-    # After adding/saving, redirect to home page
+    # After adding/saving audio, redirect to home page
     return redirect(reverse('home'))
 
 
 # View for displaying saved favourite audio in user account
+# Note - this view can be combined with save_audio after return redirect
+# Refer to add_audio view above for sample logic
 def view_saved_audio(request):
 
     # Get current userprofile & all audio in their fav_audio field
