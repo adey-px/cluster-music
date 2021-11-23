@@ -106,26 +106,28 @@ The following user story was tested for Pro user:
 While developing this application, I encountered some bugs and fixed them as follow:
 1. When I clicked any audio to play on home page, it always displayed firts audio on the page whereas it supposed to display and play
 the specific audio that I clicked. I fixed this bug by using Coditional Expressions with Case & When, to make the selected audio object
-to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">StackOverflow</a>
+to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
 2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. I fixed this bug by using Stripe payment link provided on their website to implement 
 payment for Pro user. 
 
 
 ## 5.0 Deployment
 This project is hosted on Heroku using this procedure:
-1. I first set up some important files (requiremnts.txt & Procfile) that Heroku needs to run the App 
-2. At the terminal, I typed pip3 freeze --local > requirements.txt (this file is required to tell Heroku which apps & dependencies are required to runn the App)
-3. I typed echo web: python app.py > Procfile (this file is what helps Heroku to know which file runs the App and how to run it)
-4. I login to heroku, clicked New, Create new app 
-5. I chose GitHub option in order to set up Automatic Deployment from my Repository
-6. I typed & searched the name of my App Repo in space provided and clicked Connect
-7. I clicked on Settings Tab, then clicked on Reveal Config Vars - this is where to securely tell Heroku those required hidden variables
-8. I opened env.py, type all the 5 default environment variables with their values, as they are, but without quotations
-9. I clicked Hide Config Vars, then returned to Deploy Tab
-10. Before Deploy, I returned to my App project, at the Git command Terminal, typeed Git status to see any untracked files/pending changes 
-11. I added requiremnts.txt file and Procfile one by one and push them to GitHub separately
-12. I returned to Heroku and clicked Enable Automatic Deploys
-13. I clicked Deploy Branch, after install complete - I saw the App was successfully deployed to Heroku
+1. At the terminal, install Heroku cli and login to it using registered email & password on heroku site
+2. Pip3 install required packages which are psycopg2-binary and gunicorn
+3. Freeze the requirements and direct them to requirements.txt
+4. Create new app on heroku using the commad: heroku apps:create dj-cluster-music
+5. Open heroku dashboard, check to see the new app listed and select it
+6. Click Resources tab - Add-ons, search for server-based database "Postgres" and select free version
+7. Click Settings tab - Reveal Config Vars to see Postgres has been added as the app database
+8. At the terminal, connect to the remote Postgres by pip3 install dj-databse-url
+9. Again, freeze the requirements using pip3 freeze --local > requirements.txt
+10. At terminal, type heroku config to get database url, which can also be gotten on heroku web ui
+11. In the project, open settings.py/DATABASES. duplicate the existing code and comment out the previous
+11. In the new code, set the direct value of 'default' to dj_database_url.parse()
+12. Copy and paste inside (''), the Database_url from heroku - already shown at the terminal in Step 10
+13. At the top of settings.py, import dj_database_url
+14. Run migration using python3 manage.py migrate to transfer data from default sqlite3 to remote Postgres on heroku
 
 
 ## 6.0 Credits

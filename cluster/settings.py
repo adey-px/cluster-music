@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 # CURRENT DJANGO VERSION IS 3.0.1
 
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -121,11 +122,15 @@ WSGI_APPLICATION = 'cluster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+# 'default': {
+# 'ENGINE': 'django.db.backends.sqlite3',
+# 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.parse('postgres://tvuxnrwcjqxrmm:b0078f38b50dd37f26aef16c558eff9eda6e610fb48fb3dbe2ae1097ed306bc1@ec2-54-144-165-97.compute-1.amazonaws.com:5432/d1nsr9vnhaahp0')
 }
 
 
