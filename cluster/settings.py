@@ -14,8 +14,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 # CURRENT DJANGO VERSION IS 3.0.1
 
 import os
-import dj_database_url
-import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -108,7 +106,6 @@ SITE_ID = 1
 # For sending confirmation email links to new accounts
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
 # Additional settings for allauth to work
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -124,16 +121,16 @@ WSGI_APPLICATION = 'cluster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-# 'default': {
-# 'ENGINE': 'django.db.backends.sqlite3',
-# 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-# }
-# }
-
 DATABASES = {
-    'default': dj_database_url.parse('postgres://tvuxnrwcjqxrmm:b0078f38b50dd37f26aef16c558eff9eda6e610fb48fb3dbe2ae1097ed306bc1@ec2-54-144-165-97.compute-1.amazonaws.com:5432/d1nsr9vnhaahp0')
+'default': {
+'ENGINE': 'django.db.backends.sqlite3',
+'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 }
+}
+
+#DATABASES = {
+    #'default': dj_database_url.parse('postgres://tvuxnrwcjqxrmm:b0078f38b50dd37f26aef16c558eff9eda6e610fb48fb3dbe2ae1097ed306bc1@ec2-54-144-165-97.compute-1.amazonaws.com:5432/d1nsr9vnhaahp0')
+#}
 
 
 # Password validation
@@ -172,7 +169,6 @@ USE_TZ = True
 # Static files directory (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
@@ -188,7 +184,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Stripe keys
 STRIPE_PUBLIC_KEY = "pk_test_51JimaUI0jEXLK2JC0egYHeDwcoD1WLBc9tsij3KMOuPFmKquTtBta3n3NnCOMCKQtl428KwsVkag069QeAzNDbmw00FyGHSzoK"
 STRIPE_SECRET_KEY = "sk_test_51JimaUI0jEXLK2JCwGqPv9OxnqmXpB99fbOqCIDfqybG0JqFUj449vM6BMseKrk5PB7rzoTdOk1iyFBtCs22ktR400O1b4aiVN"
-
-
-django_heroku.settings(locals())
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
