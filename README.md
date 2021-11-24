@@ -109,6 +109,7 @@ the specific audio that I clicked. I fixed this bug by using Coditional Expressi
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
 2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. I fixed this bug by using Stripe payment link provided on their website to implement 
 payment for Pro user. 
+3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got an idea to downgrade psycopg2 installation to 2.8.6 and that fixed the issue
 
 
 ## 5.0 Deployment
@@ -128,6 +129,7 @@ This project is hosted on Heroku using this procedure:
 12. Copy and paste inside (''), the Database_url from heroku - already shown at the terminal in Step 10
 13. At the top of settings.py, import dj_database_url
 14. Run migration using python3 manage.py migrate to transfer data from default sqlite3 to remote Postgres on heroku
+15. Use git commands to push project code to GitHub and update the remote repo
 
 
 ## 6.0 Credits
