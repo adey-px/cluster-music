@@ -107,9 +107,9 @@ While developing this application, I encountered some bugs and fixed them as fol
 1. When I clicked any audio to play on home page, it always displayed firts audio on the page whereas it supposed to display and play
 the specific audio that I clicked. I fixed this bug by using Coditional Expressions with Case & When, to make the selected audio object
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
-2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. I fixed this bug by using Stripe payment link provided on their website to implement 
-payment for Pro user. 
-3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got an idea to downgrade psycopg2 installation to 2.8.6 and that fixed the issue
+2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However dur to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user. 
+3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got an idea to <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
+
 
 
 ## 5.0 Deployment
@@ -121,7 +121,7 @@ This project is hosted on Heroku using this procedure:
 5. Open heroku dashboard, check to see the new app listed and select it
 6. Click Resources tab - Add-ons, search for server-based database "Postgres" and select free version
 7. Click Settings tab - Reveal Config Vars to see Postgres has been added as the app database
-8. At the terminal, connect to the remote Postgres by pip3 install dj-databse-url
+8. At the terminal, connect to the remote Postgres by pip3 install dj_databse_url
 9. Again, freeze the requirements using pip3 freeze --local > requirements.txt
 10. At terminal, type heroku config to get database url, which can also be gotten on heroku web ui
 11. In the project, open settings.py/DATABASES. duplicate the existing code and comment out the previous
@@ -129,7 +129,8 @@ This project is hosted on Heroku using this procedure:
 12. Copy and paste inside (''), the Database_url from heroku - already shown at the terminal in Step 10
 13. At the top of settings.py, import dj_database_url
 14. Run migration using python3 manage.py migrate to transfer data from default sqlite3 to remote Postgres on heroku
-15. Use git commands to push project code to GitHub and update the remote repo
+15. Use git commands to push project code to GitHub to update the remote repo
+16. Push to heroku using git push heroku main
 
 
 ## 6.0 Credits

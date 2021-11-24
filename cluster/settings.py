@@ -15,6 +15,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 import dj_database_url
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -170,6 +172,7 @@ USE_TZ = True
 # Static files directory (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
@@ -185,3 +188,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Stripe keys
 STRIPE_PUBLIC_KEY = "pk_test_51JimaUI0jEXLK2JC0egYHeDwcoD1WLBc9tsij3KMOuPFmKquTtBta3n3NnCOMCKQtl428KwsVkag069QeAzNDbmw00FyGHSzoK"
 STRIPE_SECRET_KEY = "sk_test_51JimaUI0jEXLK2JCwGqPv9OxnqmXpB99fbOqCIDfqybG0JqFUj449vM6BMseKrk5PB7rzoTdOk1iyFBtCs22ktR400O1b4aiVN"
+
+
+django_heroku.settings(locals())
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
