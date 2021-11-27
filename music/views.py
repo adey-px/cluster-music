@@ -52,6 +52,11 @@ def now_playing(request, audio_id):
     # Get each audio to play by id from the db
     audio_playing = get_object_or_404(Audio, pk=audio_id)
 
+    # Pass the audio_id of audio playing into current session
+    # Ref to context.py where this session audio_id is used
+    if audio_playing:
+        request.session['audio_id'] = audio_id
+
     # Get all audios from db, making audio_playing always show 1st
     # using Conditional expressions - Case & When
     audios = Audio.objects.all().order_by(

@@ -1,11 +1,11 @@
 ## 1.0 Project Name: Cluster Music
-The aim of the project is to develop a custom application for user to listen to audio music, similar to existing popular audio apps like Spotify, Amazon music & YouTube music among others. The application consists of a home page displaying audio and a search bar where user can search for audio music to play. There is also a navigation panel on the left side and it appears on all pages of the site.
+The aim of the project is to develop a custom application for user to listen to audio music, similar to existing popular audio apps like Spotify, Amazon music & YouTube music among others. The application consists of a home page displaying audio and a search bar where user can search for audio music to play. There is also a navigation panel on the left side and it appears on all pages of the site
 
-The project is deployed to Heroku on ............
+The project is deployed to Python Anywhere on ............
 
 
 ## 2.0 UX
-The web Application is developed for any user who enjoys playing audio music for relaxation or any other reason.
+The web Application is developed for any user who enjoys playing audio music for relaxation or any other reason
 
 ### 2.1 User stories
 As a user, I want to:
@@ -37,35 +37,36 @@ In order to bring the idea of this project to life, wireframes were produced wit
 10. Pro user who has made once-off payment using Stripe payment link provided, has the previledge for unlimited download of audio from the site
 
 ### 3.2 Features Left to Implement
-1. To allow user to be able to share audio on Social media platforms and email through button link attached to each audio
-2. To allow authenticated user to see their play history on History page accessible via the History button link located on left panel
-3. To use coding to implement Stripe payment for Pro users rather than the Payment link used due to constraint of project submission time
+1. Add autoplay functionality to audios in the player
+2. Functionality to check audio format and automatically detect audio length/duration during uploading
+3. Random display of various audios from database on the home page and the right panel on now_playing page
+4. Allow user to be able to share audio on Social media platforms and email through button link attached to each audio
+5. Allow authenticated user to see their play history on History page accessible via the History button link located on left panel
+6. Use coding to implement Stripe payment for Pro users rather than the Payment link used due to constraint of project submission time
+7. Improve the UI/UX design of the application for better user experience
 
 ### 3.3 Languages and Technologies Used
-1. <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML5:</a>  This project uses HTML5 as the backbone and main markup language.
-2. <a href="https://mdbootstrap.com/docs/b4/jquery/" target="_blank">Material Design:</a> It uses Material Design for Bootstrap 4 Standard as Frontend Framework to design its layout and user interface.
-2. <a href="https://en.wikipedia.org/wiki/CSS" target="_blank">CSS3:</a> The project uses CSS3 for additional styling.
-4. <a href="https://ianlunn.github.io/Hover/" target="_blank">Hover.CSS:</a> It uses Hover.css for button hover.
-5. <a href="https://fontawesome.com/" target="_blank">Font Awesome:</a> It uses Font Awesome for form input fields and button icons.
-6. <a href="https://www.javascript.com/" target="_blank">JavaScript:</a> It uses vanilla JavaScript for audio player functionality
-7. <a href="https://www.djangoproject.com/" target="_blank">Django:</a>  It uses Django framework based on Python Language. The Django technology is to develop the site's dynamic content, CRUD Operations, user authentication and other programming functionalities.
-
-8. <a href="https://www.mongodb.com/" target="_blank">MongoDB:</a> It uses MongoDB, a Nosql database which stores user data in various collections. The data is manipulated programmatically through CRUD operations.
-
-9. <a href="https://heroku.com" target="_blank">Heroku:</a> It uses Heorku platform as a Service for deployment to make the application visible and available for the public
+1. <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML5:</a>  This project uses HTML5 as the backbone and main markup language
+2. <a href="https://mdbootstrap.com/docs/b4/jquery/" target="_blank">Material Design:</a> It uses Material Design for Bootstrap 4 Standard as Frontend Framework to design its layout and user interface
+3. <a href="https://en.wikipedia.org/wiki/CSS" target="_blank">CSS3:</a> The project uses CSS3 for additional styling
+4. <a href="https://fontawesome.com/" target="_blank">Font Awesome:</a> It uses Font Awesome for form input fields and button icons
+5. <a href="https://www.javascript.com/" target="_blank">JavaScript:</a> It uses vanilla JavaScript for audio player functionality
+6. <a href="https://www.djangoproject.com/" target="_blank">Django:</a>  It uses Django framework based on Python Language. The Django technology is to develop the site's dynamic content, CRUD Operations, user authentication and other programming functionalities
+7. <a href="https://www.sqlite.org/index.html" target="_blank">SQLite:</a> It uses default SQLite database engine in Django to store data
+8. <a href="https://www.pythonanywhere.com/" target="_blank">Python Anywhere:</a> It uses Python Anywhere platform as a Service for deployment to make the application visible and available for the public
 
 
 ## 4.0 Testing
-All the internal and external links including menu items on navigation bar works well and the application looks good on Chrome, Mozilla and Edge browsers. The site is responsive on mobile devices.
+All the internal and external links including menu items on navigation bar works well and the application looks good on Chrome, Mozilla and Edge browsers. The site is responsive on mobile devices
 
 ### 4.1 Code Validation
-1. HTML codes were tested with <a href="https://validator.w3.org/#validate_by_input" target="_blank">W3C MarkUp Validation Service</a>. The codes returned with no error.
-2. CSS codes were tested with <a href="https://jigsaw.w3.org/css-validator/" target="_blank">W3C CSS Validation Service</a>. The codes returned with no error.
-3. JavaScript codes were tested with <a href="https://jshint.com/" target="_blank">JSHint</a>. The codes returned with no error.
-4. Python codes were tested with <a href="http://pep8online.com/" target="_blank">PEP8</a>. The codes returned with no error.
+1. HTML codes were tested with <a href="https://validator.w3.org/#validate_by_input" target="_blank">W3C MarkUp Validation Service</a>. The codes returned with no error
+2. CSS codes were tested with <a href="https://jigsaw.w3.org/css-validator/" target="_blank">W3C CSS Validation Service</a>. The codes returned with no error
+3. JavaScript codes were tested with <a href="https://jshint.com/" target="_blank">JSHint</a>. The codes returned with no error
+4. Python codes were tested with <a href="http://pep8online.com/" target="_blank">PEP8</a>. The codes returned with no error
 
 ### 4.2 Testing Responsiveness
-All the pages of this application are well responsive on all devices including dektop, tablet and mobile devices. See images below for results.
+All the pages of this application are well responsive on all devices including dektop, tablet and mobile devices. See images below for results
 <img src="readme/capture-one.png" alt="responsiveness-result">
 <img src="readme/capture-two.png" alt="responsiveness-result">
 <img src="readme/capture-three.png" alt="responsiveness-result">
@@ -107,30 +108,17 @@ While developing this application, I encountered some bugs and fixed them as fol
 1. When I clicked any audio to play on home page, it always displayed firts audio on the page whereas it supposed to display and play
 the specific audio that I clicked. I fixed this bug by using Coditional Expressions with Case & When, to make the selected audio object
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
-2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However dur to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user. 
+2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However dur to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user
 3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got an idea to <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
 
 
 
 ## 5.0 Deployment
-This project is hosted on Heroku using this procedure:
-1. At the terminal, install Heroku cli and login to it using registered email & password on heroku site
-2. Pip3 install required packages which are psycopg2-binary and gunicorn
-3. Freeze the requirements and direct them to requirements.txt
-4. Create new app on heroku using the commad: heroku apps:create dj-cluster-music
-5. Open heroku dashboard, check to see the new app listed and select it
-6. Click Resources tab - Add-ons, search for server-based database "Postgres" and select free version
-7. Click Settings tab - Reveal Config Vars to see Postgres has been added as the app database
-8. At the terminal, connect to the remote Postgres by pip3 install dj_databse_url
-9. Again, freeze the requirements using pip3 freeze --local > requirements.txt
-10. At terminal, type heroku config to get database url, which can also be gotten on heroku web ui
-11. In the project, open settings.py/DATABASES. duplicate the existing code and comment out the previous
-11. In the new code, set the direct value of 'default' to dj_database_url.parse()
-12. Copy and paste inside (''), the Database_url from heroku - already shown at the terminal in Step 10
-13. At the top of settings.py, import dj_database_url
-14. Run migration using python3 manage.py migrate to transfer data from default sqlite3 to remote Postgres on heroku
-15. Use git commands to push project code to GitHub to update the remote repo
-16. Push to heroku using git push heroku main
+This project is hosted on Python Anywhere using this procedure:
+
+
+
+
 
 
 ## 6.0 Credits

@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('playing/<audio_id>', views.now_playing, name='now_playing'),
+    path('playing/<audio_id>/', views.now_playing, name='now_playing'),
     path('add_audio/', views.add_audio, name='add_audio'),
     path('edit_audio/<audio_id>', views.edit_audio, name='edit_audio'),
     path('delete/<audio_id>', views.delete_audio, name='delete_audio'),

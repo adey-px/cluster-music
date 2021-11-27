@@ -3,14 +3,16 @@ from django.shortcuts import get_object_or_404
 from .models import Audio
 
 
-# Create bag_contents inside this context.py to get audio saved by user
-# Add bag_contents name to settings.py to allow user save from any page
-def bag_contents(request):
+# This context name is added to settings.py to make its variables
+# accessible across all templates of the project
+def project_context(request):
 
-    bag_items = []
+    # Get audio_id put in session in music/now_playing view
+    audio = request.session.get("audio_id")
 
+    # Pass the audio_id into context and use the var in sidenav btn
     context = {
-        'bag_items': bag_items,
+        'audio_play': audio,
     }
 
     return context

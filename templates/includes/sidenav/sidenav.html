@@ -1,30 +1,48 @@
 <!-- Sidenav on left side of all templates inserted using include syntax -->
 <div class="list-group">
     <a href="{% url 'home' %}" class="list-group-item list-group-item-action list-group-item-dark">
-      <i class="fas fa-home"></i> Home
+      <i class="fas fa-home"></i> 
+      <span class="d-none d-lg-inline">Home</span> 
     </a>
-    <a href="" class="list-group-item list-group-item-action list-group-item-dark">
-      <i class="far fa-play-circle"></i> Now Playing
-    </a>
+    
+    {% if active_audio %}
+      <!-- audio_play here is the var passed into context inside context.py file -->
+      <a href="{% url 'now_playing' audio_play %}" class="list-group-item list-group-item-action list-group-item-dark">
+        <i class="far fa-play-circle"></i> 
+        <span class="d-none d-lg-inline">Now Playing</span> 
+      </a>
+
+    {% else %}
+      <!-- Render disabled button if no audio is playing -->
+      <a class="list-group-item list-group-item-action list-group-item-dark">
+        <i class="far fa-play-circle"></i> 
+        <span class="d-none d-lg-inline">Now Playing</span> 
+      </a>
+    {% endif %}
   
     {% if request.user.is_authenticated %}
       <a href="{% url 'my_audio' %}" class="list-group-item list-group-item-action list-group-item-dark">
-        <i class="fas fa-headphones-alt"></i> Your Music
+        <i class="fas fa-headphones-alt"></i> 
+        <span class="d-none d-lg-inline">Your Music</span> 
       </a>
       <a href="{% url 'view_saved_audio' %}" class="list-group-item list-group-item-action list-group-item-dark">
-        <i class="far fa-save"></i> Saved
+        <i class="far fa-save"></i> 
+        <span class="d-none d-lg-inline">Favourite</span> 
       </a>
     {% endif %}
       
     <a href="{% url 'history' %}" class="list-group-item list-group-item-action list-group-item-dark">
-      <i class="fas fa-history"></i> History
+      <i class="fas fa-history"></i> 
+      <span class="d-none d-lg-inline">History</span> 
     </a>
-    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">
-      <i class="far fa-question-circle"></i> FAQ
+    <a href="{% url 'faq' %}" class="list-group-item list-group-item-action list-group-item-dark">
+      <i class="far fa-question-circle"></i> 
+      <span class="d-none d-lg-inline">FAQ</span> 
     </a>
     <a class="list-group-item list-group-item-dark feedback" tabindex="-1"></a>
-    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">
-      <i class="far fa-comment-dots"></i> Feedback
+    <a href="{% url 'feedback' %}" class="list-group-item list-group-item-action list-group-item-dark">
+      <i class="far fa-comment-dots"></i> 
+      <span class="d-none d-lg-inline">Feedback</span> 
     </a>
     <a href="#" class="list-group-item list-group-item-dark" tabindex="-1"></a>
   </div>

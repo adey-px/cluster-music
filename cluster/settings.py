@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'music',
     'profiles',
     'checkout',
+    'public',
     'crispy_forms',
 ]
 
@@ -80,8 +81,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'music.context.bag_contents',  # To return bag_contents in music app/context.py directly
-            ],                                 # and make available in all pages without using their views
+                'music.context.project_context',  # Return project_context in music/context.py directly
+            ],                                 # making its variables available in all pages without using their views
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
