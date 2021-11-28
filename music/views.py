@@ -180,3 +180,10 @@ def history(request):
     """ A view that gets play history """
 
     return render(request, 'music/history.html')
+
+
+# View for sharing audio to social media platforms
+def share_audio(request):
+    """ A view that shares audio to social media """
+
+    return render(request, 'music/share_audio.html')

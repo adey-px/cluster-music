@@ -12,7 +12,7 @@
       </div>
 
       <!-- Paginator to display audio song to play -->
-      <div class="col-7">
+      <div class="col-10 col-md-7">
 
         {% for audio in pagination %}
 
@@ -74,11 +74,11 @@
       </div>
 
       <!-- Right sidebar to display media list for quick access while playing audios -->
-      <div class="col-3">
+      <div class="col-8 col-md-3">
         <ul class="list-unstyled">
 
           {% for audio in songs %}
-            <a href="{% url 'now_playing' audio.id %}" class="text-decoration-none">
+            <a href="{% url 'now_playing' audio.id %}" class="text-decoration-none d-none d-lg-inline">
               <li class="media">
                 <img src="{{ MEDIA_URL }}{{ audio.label }}" class="mr-3 audio-label" alt="audio label">
                 <div class="media-body">

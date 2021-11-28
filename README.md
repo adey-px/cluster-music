@@ -7,14 +7,13 @@ The project is deployed to Python Anywhere on ............
 ## 2.0 UX
 The web Application is developed for any user who enjoys playing audio music for relaxation or any other reason
 
-### 2.1 User stories
+### 2.1 User storiess
 As a user, I want to:
 1. click on any audio to play it 
-2. search for audio to play in the search bar
-3. create an account and login successfully 
-4. upload my own audio to the site to allow other users to listen to it
-5. view list of my own audios and be able to edit or delete them
-6. save favourite audio as a playlist
+2. create an account and login successfully 
+3. upload my own audio to the site to allow other users to listen to it
+4. view list of my own audios and be able to edit or delete them
+5. save favourite audio as a playlist
 
 As a Pro user, I want to:
 1. download audio from the site to my computer
@@ -26,24 +25,27 @@ In order to bring the idea of this project to life, wireframes were produced wit
 ## 3.0 Features
 ### 3.1 Existing Features
 1. The site has top navigation bar having name logo on the right, a search bar at the center and user account account on the left side
-2. The search bar allows user to search for audio to play
+2. The site has no footer so as to allow continuous scrolling down similar to Youtube site and Facebook
 3. The user account icon consists of Register and Login links which allow user to register new account and login existing account respectively
 4. There is also a navigation panel on left side which consists of links that allow user to navigate to inner pages of the site
 5. When user clicks on an audio object, it opens in now_playing page and the audio is played from beginning to end
 6. While audio is playing, it can be paused or fast-forwarded by user
 7. Audio has functionality which allows user to select previous or next audio to play
-8. On now_playing page, there is a right panel which loops over all audio in database. This makes it easy for user to have access to select any audio of their choice to play
+8. On now_playing page, there is a right panel which loops over all audio in database. This makes it easy for user to have access to select any audio of their choice to play. The right panel is hidden is mobile view
 9. Registered user has the previledge to upload their own audio and they can see the list of their audio in "Your Audio" page
 10. Pro user who has made once-off payment using Stripe payment link provided, has the previledge for unlimited download of audio from the site
 
+            Username: adey-px
+            Paswword: adeyking1
+
 ### 3.2 Features Left to Implement
-1. Add autoplay functionality to audios in the player
-2. Functionality to check audio format and automatically detect audio length/duration during uploading
-3. Random display of various audios from database on the home page and the right panel on now_playing page
-4. Allow user to be able to share audio on Social media platforms and email through button link attached to each audio
-5. Allow authenticated user to see their play history on History page accessible via the History button link located on left panel
-6. Use coding to implement Stripe payment for Pro users rather than the Payment link used due to constraint of project submission time
-7. Improve the UI/UX design of the application for better user experience
+1. Fucntionality to search for audio by title or artist in the search bar
+2. Add autoplay functionality to audios in the player
+3. Functionality to check audio format and automatically detect audio length/duration during uploading
+4. Random display of various audios from database on the home page and the right panel on now_playing page
+5. Allow user to be able to share audio on Social media platforms and email through button link attached to each audio
+6. Allow authenticated user to see their play history on History page accessible via the History button link located on left panel
+7. Use coding to implement Stripe payment for Pro users rather than the Payment link used due to constraint of project submission time
 
 ### 3.3 Languages and Technologies Used
 1. <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML5:</a>  This project uses HTML5 as the backbone and main markup language
@@ -80,12 +82,11 @@ This application is compatible on popular browsers including Chrome, Edge, Safar
 ### 4.4 Testing User Story 
 The following user stories were tested for user: 
 1. select an audio and play it successfully 
-2. search for an audio in search bar to play
-3. create an account with email/username and password
-4. Login into their account successfuly
-5. upload audio to the site to allow other users to listen to it
-6. view list of their uploaded audios and be able to edit or delete them
-7. save favourite audio as a playlist
+2. create an account with email/username and password
+3. Login into their account successfuly
+4. upload audio to the site to allow other users to listen to it
+5. view list of their uploaded audios and be able to edit or delete them
+6. save favourite audio as a playlist
 
 The following user story was tested for Pro user:
 1. download audio from the site to my computer successfully
@@ -95,13 +96,12 @@ The following user story was tested for Pro user:
 2. User can add/upload audio into the database
 3. They can also create/read (play audio), edit/update and delete their audio successfully and these complete CRUD functionalities
 4. All the forms including Register form, Login form and all other forms work as expected
-5. User can search for audio in search bar and click on it to play
-6. They can create account and login sucessfully with their username and password
-7. Authenticated user can  upload audio and view the list of their audio in "Your Audio" page
-8. They can save audio and create a playlist of their favorite audios
-9. They can click forward or backward button to play next or previous audio respectively
-10. They can click to play/pause, fastward or rewind audio on now_playing page
-11. Pro user can download unlimited audio to their personal computer
+5. They can create account and login sucessfully with their username and password
+6. Authenticated user can  upload audio and view the list of their audio in "Your Audio" page
+7. They can save audio and create a playlist of their favorite audios
+8. They can click forward or backward button to play next or previous audio respectively
+9. They can click to play/pause, fastward or rewind audio on now_playing page
+10. Pro user can download unlimited audio to their personal computer
 
 ### 4.6 Bugs
 While developing this application, I encountered some bugs and fixed them as follow:
@@ -110,15 +110,15 @@ the specific audio that I clicked. I fixed this bug by using Coditional Expressi
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
 2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However dur to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user
 3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got an idea to <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
-
+4. Other errors later occurred while the project was building up on heroku. There was no much time to fix the errors so I quickly found another platform for Django app deployment which was <a href="https://www.pythonanywhere.com/">Python Anywhere</a>
 
 
 ## 5.0 Deployment
-This project is hosted on Python Anywhere using this procedure:
-
-
-
-
+This project is hosted on <a href="https://www.pythonanywhere.com/">Python Anywhere</a> using this procedure:
+1. Upload the project code to PythonAnywhere from GitHub
+2. Set up a virtualenv and install Django and any other requirements
+3. Set up web app and WSGI file using the manual config option provided
+4. Add all other other setup including static files, environment variables etc
 
 
 ## 6.0 Credits

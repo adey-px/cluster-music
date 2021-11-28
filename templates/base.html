@@ -114,12 +114,7 @@
                                         <div role="separator" class="dropdown-divider"></div>
                                         <a href="{% url 'add_audio' %}" class="dropdown-item">Upload Audio</a>
                                         <div role="separator" class="dropdown-divider"></div>
-
-                                        {% if request.user.is_superuser %}
-                                            <a href="" class="dropdown-item">Manage Products</a>
-                                            <div role="separator" class="dropdown-divider"></div>
-                                        {% endif %}
-
+                                        
                                         <a href="" class="dropdown-item">Upgrade to Pro</a>
                                         <div role="separator" class="dropdown-divider"></div>
                                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>

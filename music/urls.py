@@ -11,4 +11,5 @@ urlpatterns = [
     path('favourite/<audio_id>', views.save_audio, name='save_audio'),
     path('saved_audio/', views.view_saved_audio, name='view_saved_audio'),
     path('history/', views.history, name='history'),
+    path('share/', views.share_audio, name='share_audio'),
 ]
