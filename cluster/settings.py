@@ -15,6 +15,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -123,16 +124,11 @@ WSGI_APPLICATION = 'cluster.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-'default': {
-'ENGINE': 'django.db.backends.sqlite3',
-'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
-}
-
-#DATABASES = {
-    #'default': dj_database_url.parse('postgres://tvuxnrwcjqxrmm:b0078f38b50dd37f26aef16c558eff9eda6e610fb48fb3dbe2ae1097ed306bc1@ec2-54-144-165-97.compute-1.amazonaws.com:5432/d1nsr9vnhaahp0')
-#}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -181,7 +177,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Stripe keys
-STRIPE_PUBLIC_KEY = "pk_test_51JimaUI0jEXLK2JC0egYHeDwcoD1WLBc9tsij3KMOuPFmKquTtBta3n3NnCOMCKQtl428KwsVkag069QeAzNDbmw00FyGHSzoK"
-STRIPE_SECRET_KEY = "sk_test_51JimaUI0jEXLK2JCwGqPv9OxnqmXpB99fbOqCIDfqybG0JqFUj449vM6BMseKrk5PB7rzoTdOk1iyFBtCs22ktR400O1b4aiVN"

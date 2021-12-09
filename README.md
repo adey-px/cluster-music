@@ -1,7 +1,7 @@
 ## 1.0 Project Name: Cluster Music
 The aim of the project is to develop a custom application for user to listen to audio music, similar to existing popular audio apps like Spotify, Amazon music & YouTube music among others. The application consists of a home page displaying audio and a search bar where user can search for audio music to play. There is also a navigation panel on the left side and it appears on all pages of the site
 
-The project is deployed to Python Anywhere on ............
+The project is deployed to Python Anywhere on adeypx.pythonanywhere.com
 
 
 ## 2.0 UX
@@ -54,6 +54,10 @@ In order to bring the idea of this project to life, wireframes were produced wit
 4. <a href="https://fontawesome.com/" target="_blank">Font Awesome:</a> It uses Font Awesome for form input fields and button icons
 5. <a href="https://www.javascript.com/" target="_blank">JavaScript:</a> It uses vanilla JavaScript for audio player functionality
 6. <a href="https://www.djangoproject.com/" target="_blank">Django:</a>  It uses Django framework based on Python Language. The Django technology is to develop the site's dynamic content, CRUD Operations, user authentication and other programming functionalities
+
+
+
+
 7. <a href="https://www.sqlite.org/index.html" target="_blank">SQLite:</a> It uses default SQLite database engine in Django to store data
 8. <a href="https://www.pythonanywhere.com/" target="_blank">Python Anywhere:</a> It uses Python Anywhere platform as a Service for deployment to make the application visible and available for the public
 
@@ -114,11 +118,25 @@ to always show on top of the iteration in the paginator. I learnt this concept f
 
 
 ## 5.0 Deployment
-This project is hosted on <a href="https://www.pythonanywhere.com/">Python Anywhere</a> using this procedure:
-1. Upload the project code to PythonAnywhere from GitHub
-2. Set up a virtualenv and install Django and any other requirements
-3. Set up web app and WSGI file using the manual config option provided
-4. Add all other other setup including static files, environment variables etc
+1. At the terminal, install Heroku cli and login to it using registered email & password on heroku site
+2. Pip3 install required packages which are psycopg2-binary and gunicorn
+3. Freeze the requirements and direct them to requirements.txt
+4. Create new app on heroku using the commad: heroku apps:create dj-cluster-music
+5. Open heroku dashboard, check to see the new app listed and select it
+6. Click Resources tab - Add-ons, search for server-based database "Postgres" and select free version
+7. Click Settings tab - Reveal Config Vars to see Postgres has been added as the app database
+8. At the terminal, connect to the remote Postgres by pip3 install dj_databse_url
+9. Again, freeze the requirements using pip3 freeze --local > requirements.txt
+10. At terminal, type heroku config to get database url, which can also be gotten on heroku web ui
+11. In the project, open settings.py/DATABASES. duplicate the existing code and comment out the previous
+11. In the new code, set the direct value of 'default' to dj_database_url.parse('')
+12. Copy and paste inside (''), the Database_url from heroku - already shown at the terminal in Step 10
+13. At the top of settings.py, import dj_database_url
+14. Run migration using python3 manage.py migrate to transfer data from default sqlite3 to remote Postgres on heroku
+15. Uncomment the defaul database setting and remove heroku dj_database_url setting so it won't end up in version cotrol
+16. Next, use git commands to push project code to GitHub to update the remote repo
+17. Push to heroku using git push heroku main
+
 
 
 ## 6.0 Credits
