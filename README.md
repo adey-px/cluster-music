@@ -129,14 +129,16 @@ to always show on top of the iteration in the paginator. I learnt this concept f
 9. Again, freeze the requirements using pip3 freeze --local > requirements.txt
 10. At terminal, type heroku config to get database url, which can also be gotten on heroku web ui
 11. In the project, open settings.py/DATABASES. duplicate the existing code and comment out the previous
-11. In the new code, set the direct value of 'default' to dj_database_url.parse('')
-12. Copy and paste inside (''), the Database_url from heroku - already shown at the terminal in Step 10
-13. At the top of settings.py, import dj_database_url
-14. Run migration using python3 manage.py migrate to transfer data from default sqlite3 to remote Postgres on heroku
-15. Uncomment the defaul database setting and remove heroku dj_database_url setting so it won't end up in version cotrol
-16. Next, use git commands to push project code to GitHub to update the remote repo
-17. Push to heroku using git push heroku main
-
+12. In the new code, set the direct value of 'default' to dj_database_url.parse('')
+13. Copy and paste inside (''), the Database_url from heroku - already shown at the terminal in Step 10
+14. At the top of settings.py, import dj_database_url
+15. Run migration using python3 manage.py migrate to transfer data from default sqlite3 to remote Postgres on heroku
+16. Uncomment the defaul database setting and remove heroku dj_database_url setting so it won't end up in version cotrol
+17. Next, use git commands to push project code to GitHub to update the remote repo
+18. Push to heroku using git push heroku main
+19. Use if statement to determine which database to run as default, either default sqlite or heroku dj_database_url
+20. Create new file named Procfile inside project main directory, which tells heroku to create web dyno that runs gunicorn
+21. Login to heroku cli at terminal and temporarily disable collectstatic so heroku won't try to collect static files
 
 
 ## 6.0 Credits

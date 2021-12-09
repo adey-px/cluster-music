@@ -30,7 +30,8 @@ SECRET_KEY = 'django-insecure-a=5g4(p1=f_hh=x%j^z746u#k*-=rp0y%e)d90-3l+c_akv77g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Add localhost so gitpod runserver command will also work
+ALLOWED_HOSTS = ['dj-cluster-music.herokuapp.com', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -123,12 +124,18 @@ WSGI_APPLICATION = 'cluster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# If app is running on heroku, use postgres as db, otherwise run db on sqlite
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
