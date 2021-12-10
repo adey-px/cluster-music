@@ -1,8 +1,7 @@
 ## 1.0 Project Name: Cluster Music
 The aim of the project is to develop a custom application for user to listen to audio music, similar to existing popular audio apps like Spotify, Amazon music & YouTube music among others. The application consists of a home page displaying audio and a search bar where user can search for audio music to play. There is also a navigation panel on the left side and it appears on all pages of the site
 
-The project is deployed to Python Anywhere on adeypx.pythonanywhere.com
-
+The project is deployed to Heroku on https://dj-cluster-music.herokuapp.com/
 
 ## 2.0 UX
 The web Application is developed for any user who enjoys playing audio music for relaxation or any other reason
@@ -144,6 +143,8 @@ to always show on top of the iteration in the paginator. I learnt this concept f
 24. Install boto3 and django-storages at Gitpod terminal and add 'storages' to the installed apps in settings.py and also add setting for django to connect to aws S3 bucket
 24. Update setting in heroku by adding the security keys downloaded from aws and remove DISABLE_COLLECTSTATIC key/valu from the Config Vars
 25. Create file named custom_storages.py in project directory to hold future static & media files uploaded by user. Add setting in settings.py to apply the custom_storages file
+26. Use git commands to add and push code to Github which automatically update the deployed app on heroku
+
 
 ## 6.0 Credits
 ### 6.1 Content
