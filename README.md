@@ -112,9 +112,8 @@ While developing this application, I encountered some bugs and fixed them as fol
 1. When I clicked any audio to play on home page, it always displayed firts audio on the page whereas it supposed to display and play
 the specific audio that I clicked. I fixed this bug by using Coditional Expressions with Case & When, to make the selected audio object
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
-2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However dur to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user
+2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However due to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user
 3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got an idea to <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
-4. Other errors later occurred while the project was building up on heroku. There was no much time to fix the errors so I quickly found another platform for Django app deployment which was <a href="https://www.pythonanywhere.com/">Python Anywhere</a>
 
 
 ## 5.0 Deployment
@@ -133,13 +132,18 @@ to always show on top of the iteration in the paginator. I learnt this concept f
 13. Copy and paste inside (''), the Database_url from heroku - already shown at the terminal in Step 10
 14. At the top of settings.py, import dj_database_url
 15. Run migration using python3 manage.py migrate to transfer data from default sqlite3 to remote Postgres on heroku
-16. Uncomment the defaul database setting and remove heroku dj_database_url setting so it won't end up in version cotrol
+16. Uncomment the default database setting and remove heroku dj_database_url setting so it won't end up in version cotrol
 17. Next, use git commands to push project code to GitHub to update the remote repo
-18. Push to heroku using git push heroku main
-19. Use if statement to determine which database to run as default, either default sqlite or heroku dj_database_url
-20. Create new file named Procfile inside project main directory, which tells heroku to create web dyno that runs gunicorn
-21. Login to heroku cli at terminal and temporarily disable collectstatic so heroku won't try to collect static files
-
+18. Use if statement to determine which database to run, either default sqlite or heroku (postgres) dj_database_url
+19. Create file named Procfile inside project main directory, which tells heroku to create web dyno that runs gunicorn
+20. Login to heroku cli at terminal and temporarily disable collectstatic so heroku won't try to collect static files
+21. Add heroku url for the app to be value of allowed host [] in settings.py
+22. Use git commands to push code to GitHub and immediately type git push to heroku main - the app is deployed now
+23. Open AWS account, create S3 bucket, User Group, IAM role policy and attach the role to S3 bucket
+23. Create User under User Group and download security keys
+24. Install boto3 and django-storages at Gitpod terminal and add 'storages' to the installed apps in settings.py and also add setting for django to connect to aws S3 bucket
+24. Update setting in heroku by adding the security keys downloaded from aws and remove DISABLE_COLLECTSTATIC key/valu from the Config Vars
+25. Create file named custom_storages.py in project directory to hold future static & media files uploaded by user. Add setting in settings.py to apply the custom_storages file
 
 ## 6.0 Credits
 ### 6.1 Content
