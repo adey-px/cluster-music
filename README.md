@@ -109,15 +109,25 @@ the specific audio that I clicked. I fixed this bug by using Coditional Expressi
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
 2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However due to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user
 3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got this site <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">to downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
-4. After successful deployment to heroku, created and connected to amazon S3 bucket to serve static files, the whole data in my database did not show in live site on heroku but showing normally on development site through gitpod and all my user logins including admin login refused to work. I contacted tutor support and they guided me in following ways:
-    i. I manually created enviroment variable named DATABASE_URL (from heroku config var) in gitpod setting and added postgres db url as its value. Other option is to create env.py file and specify the enviroment variable key/value. 
-    ii. I closed and restarted my gitpod workspace to reset the connected databse but the issue not still resolved at this time
-    ii. Next, I cut out the unneccessary requirements that gitpod added to my requirements.txt using this site https://lechien73.github.io/reqfix/ filter out the unrequired input. I noticed those unrequired files got listed after I installed boto3 and django-storages and then freeze the requirements.txt at gitpod terminal. I copied the filtered requirements and use it to replace the content inside requirements,txt file
-    iii. After that was done, I saved my requirements.txt file, Then I ran these two commands the terminal
-        pip3 uninstall -y -r <(pip3 freeze)
-        pip3 install -r requirements.txt
-    iv. At this time, I was able to create new super user and I logged into live site admin through https://dj-cluster-music.herokuapp.com/admin. Then I noticed that all my Audio database fileds were migrated and I sjust uploaded new fresh data into database and both the development site and live site worked normally
-
+4. After successful deployment to heroku, created and connected to amazon S3 bucket to serve static files, the whole data (imgaes & audio) in my database did not show in live site on heroku but showing normally on development site through gitpod and all my user logins including admin login refused to work. I contacted tutor support and they guided me in following ways: <br>
+    i. I manually created enviroment variable named DATABASE_URL (from heroku config var) in gitpod setting and added postgres db url as its value. Other option is to create env.py file and specify the enviroment variable key/value. <br>
+    ii. I closed and restarted my gitpod workspace to reset the connected databse but the issue not still resolved at this time <br>
+    iii. Next, I cut out the unneccessary requirements that gitpod added to my requirements.txt using this site https://lechien73.github.io/reqfix/ filter out the unrequired input. I noticed those unrequired files got listed after I installed boto3 and django-storages and then freeze the requirements.txt at gitpod terminal. I copied the filtered requirements and use it to replace the content inside requirements,txt file <br>
+    iv. After that was done, I saved my requirements.txt file, Then I ran these two commands at the terminal <br>
+        pip3 uninstall -y -r <(pip3 freeze) followed by pip3 install -r requirements.txt <br>
+    v. At this time, I was able to create new super user and I logged into live site admin through https://dj-cluster-music.herokuapp.com/admin. Then I noticed that all my Audio database fileds were migrated and I just uploaded new fresh data into database and both the development site and live site worked normally <br>
+5. However, out my curiosity and in further attempt to load existing data from previous database (sqlite) to current database (postgres), I contacted tutor support for help nad they guided me through even though few errors/issues were also encountered as below: <br>
+    i. At the terminal, I used this command python3 manage.py dumpdata music > music.json but importError error showing <br>
+    ii. Due to various showing at terminal, I opened new gitpod workspace for my existing project repo <br>
+    iii. In the new workspace, I commented out postgres and activated sqlite to be database <br>
+    iv. I ran python3 manage.py migrate to ensure latest migration before sending data to postgres <br>
+    v. I installed the missing module pip3 install psycopg2-binary and then tried to load data to postgres using python3 manage.py loaddata music <br>
+    vi. I got integrityError because the data files (images & audios) are connected to Userprofile and had to use these commands ............................
+    to migrate users and userprofile model as well <br>
+    vii. Then connected Gitpod back to Postgres by uncommenting it out, so that we can loaddata <br>
+    viii. However, since the app automatically creates UserProfiles as soon as a User is created, I had to first upload Users, then check what UserProfiles have been created, and then check their PKs so I can adjust them in the audio dump <br>
+    ix. When that was fixed, I was able to loaddata audio and my sqlite database content was fully transfered to postgres on Live site <br>
+    x. At this time, all previous user logins started working again since users and userprofiles have been migrated along with their data into postgres
 
 ## 5.0 Deployment
 1. At the terminal, install Heroku cli and login to it using registered email & password on heroku site
