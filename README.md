@@ -53,12 +53,8 @@ In order to bring the idea of this project to life, wireframes were produced wit
 4. <a href="https://fontawesome.com/" target="_blank">Font Awesome:</a> It uses Font Awesome for form input fields and button icons
 5. <a href="https://www.javascript.com/" target="_blank">JavaScript:</a> It uses vanilla JavaScript for audio player functionality
 6. <a href="https://www.djangoproject.com/" target="_blank">Django:</a>  It uses Django framework based on Python Language. The Django technology is to develop the site's dynamic content, CRUD Operations, user authentication and other programming functionalities
-
-
-
-
-7. <a href="https://www.sqlite.org/index.html" target="_blank">SQLite:</a> It uses default SQLite database engine in Django to store data
-8. <a href="https://www.pythonanywhere.com/" target="_blank">Python Anywhere:</a> It uses Python Anywhere platform as a Service for deployment to make the application visible and available for the public
+7. <a href="https://www.postgresql.org/" target="_blank">Postgres:</a> It uses  Postgres database to store data
+8. <a href="https://www.heroku.com/" target="_blank">Heroku:</a> It uses Heroku platform as a Service for deployment to make the application visible and available for the public
 
 
 ## 4.0 Testing
@@ -108,11 +104,19 @@ The following user story was tested for Pro user:
 
 ### 4.6 Bugs
 While developing this application, I encountered some bugs and fixed them as follow:
-1. When I clicked any audio to play on home page, it always displayed firts audio on the page whereas it supposed to display and play
+1. When I clicked any audio to play on home page, it always displayed the first audio on the page whereas it was supposed to display and play
 the specific audio that I clicked. I fixed this bug by using Coditional Expressions with Case & When, to make the selected audio object
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
 2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However due to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user
-3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got an idea to <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
+3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got this site <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">to downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
+4. After successful deployment to heroku, created and connected to amazon S3 bucket to serve static files, the whole data in my database did not show in live site on heroku but showing normally on development site through gitpod and all my user logins including admin login refused to work. I contacted tutor support and they guided me in following ways:
+    i. I manually created enviroment variable named DATABASE_URL (from heroku config var) in gitpod setting and added postgres db url as its value. Other option is to create env.py file and specify the enviroment variable key/value. 
+    ii. I closed and restarted my gitpod workspace to reset the connected databse but the issue not still resolved at this time
+    ii. Next, I cut out the unneccessary requirements that gitpod added to my requirements.txt using this site https://lechien73.github.io/reqfix/ filter out the unrequired input. I noticed those unrequired files got listed after I installed boto3 and django-storages and then freeze the requirements.txt at gitpod terminal. I copied the filtered requirements and use it to replace the content inside requirements,txt file
+    iii. After that was done, I saved my requirements.txt file, Then I ran these two commands the terminal
+        pip3 uninstall -y -r <(pip3 freeze)
+        pip3 install -r requirements.txt
+    iv. At this time, I was able to create new super user and I logged into live site admin through https://dj-cluster-music.herokuapp.com/admin. Then I noticed that all my Audio database fileds were migrated and I sjust uploaded new fresh data into database and both the development site and live site worked normally
 
 
 ## 5.0 Deployment
