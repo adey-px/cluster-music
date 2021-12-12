@@ -31,7 +31,7 @@
 
             <!-- Audio songs fetched from db with play fucntionality in script.js file -->
             <div class="mx-auto">
-              <audio class="player mx-auto" style="width: 45%;">
+              <audio class="player mx-auto" style="width: 80%;">
                 <source src="{% if audio.song %} {{audio.song.url}} {% else %} {{audio.link}} {% endif %}" type="audio/mp3" />
               </audio>
             </div>
@@ -51,7 +51,7 @@
 
             <!-- Audio songs fetched from db with play functionality in script.js file -->
             <div class="mx-auto">
-              <audio class="player mx-auto" style="width: 45%;">
+              <audio class="player mx-auto" style="width: 80%;">
                 <source src="{% if audio.song %} {{audio.song.url}} {% else %} {{audio.link}} {% endif %}" type="audio/mp3" />
               </audio>
             </div>
@@ -60,20 +60,20 @@
             <!-- Previous & next buttons of songs pages -->
             <div class="text-center" style="padding-top: 30px;">
               <a href="{% if pagination.has_previous %}?page={{ pagination.previous_page_number }}{% endif %}">
-                <i class="fa fa-step-backward fa-2x"></i>
+                <i class="fa fa-step-backward fa-2x text-light"></i>
               </a>
 
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
               <a href="{% if pagination.has_next %}?page={{ pagination.next_page_number }} {% endif %}">
-                <i class="fa fa-step-forward fa-2x"></i>
+                <i class="fa fa-step-forward fa-2x text-light"></i>
               </a>
             </div>
         {% endfor %}
 
       </div>
 
-      <!-- Right sidebar to display media list for quick access while playing audios -->
+      <!-- Right sidebar to display media list for quick access while playing audios, hidden in mobile view -->
       <div class="col-8 col-md-3">
         <ul class="list-unstyled">
 

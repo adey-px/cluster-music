@@ -109,8 +109,10 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-# For sending confirmation email links to new accounts - Check below
+
+# For sending confirmation email links to new accounts - See bottom
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Additional settings for allauth to work
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -217,7 +219,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # For sending real confirmation email to register new user
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Copied from above line
-    DEFAULT_FROM_EMAIL = 'cluster@example.com'
+    DEFAULT_FROM_EMAIL = 'example@clusterdomain.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
