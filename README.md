@@ -4,7 +4,7 @@ The aim of the project is to develop a custom application for user to listen to 
 The project is deployed to Heroku on https://dj-cluster-music.herokuapp.com/
 
 ## 2.0 UX
-The web Application is developed for any user who enjoys playing audio music for relaxation or any other reason
+The web Application is developed for any user who enjoys playing audio music for relaxation or any other personal reason
 
 ### 2.1 User storiess
 As a user, I want to:
@@ -15,7 +15,7 @@ As a user, I want to:
 5. save favourite audio as a playlist
 
 As a Pro user, I want to:
-1. download audio from the site to my computer
+1. make payment and download audio from the site to my computer
 
 ### 2.2 Wireframes
 In order to bring the idea of this project to life, wireframes were produced with the use of marker & paper. The folder named "wireframes" has been uploaded in this project's GitHub repository. The folder contains images of the wireframes designed to show Desktop, Tablet and Mobile views of various pages of the application
@@ -32,7 +32,7 @@ In order to bring the idea of this project to life, wireframes were produced wit
 7. Audio has functionality which allows user to select previous or next audio to play
 8. On now_playing page, there is a right panel which loops over all audio in database. This makes it easy for user to have access to select any audio of their choice to play. The right panel is hidden is mobile view
 9. Registered user has the previledge to upload their own audio and they can see the list of their audio in "Your Audio" page
-10. Pro user who has made once-off payment using Stripe payment link provided, has the previledge for unlimited download of audio from the site
+10. Pro user who has made once-off payment using Stripe payment link provided, has the previledge for unlimited download of audio from the site per session
 
             Username: adey-px
             Paswword: adeyking1
@@ -88,7 +88,7 @@ The following user stories were tested for user:
 6. save favourite audio as a playlist
 
 The following user story was tested for Pro user:
-1. download audio from the site to my computer successfully
+1. download audio from the site to my computer successfully after making payment
 
 ### 4.5 Testing Existing Features
 1. All the navigation links and buttons on the application work as expected
@@ -107,7 +107,7 @@ While developing this application, I encountered some bugs and fixed them as fol
 1. When I clicked any audio to play on home page, it always displayed the first audio on the page whereas it was supposed to display and play
 the specific audio that I clicked. I fixed this bug by using Coditional Expressions with Case & When, to make the selected audio object
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
-2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However due to time constraint, I used Stripe payment link provided on their website to implement payment for Pro user
+2. I tried using coding to implement Stripe payment for Pro user but it was not working as expected. However due to time constraint, I used Stripe payment link provided on the Stripe website to implement payment for Pro user with feedback provided. However, Test mode from Stripe does not allow recurrent subscription. It was stated that I need to activate my Stripe account to be able to send Live subscription to users. Hence the need to make user payment active only when they remain logged in. Users have to make another payment to have access to the download page, if they logout of their Cluster account or close and reopen their browser again next time
 3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got this site <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">to downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
 4. After successful deployment to heroku, created and connected to amazon S3 bucket to serve static files, the whole data (imgaes & audio) in my database did not show in live site on heroku but showing normally on development site through gitpod and all my user logins including admin login refused to work. I contacted tutor support and they guided me in following ways: <br>
     i. I manually created enviroment variable named DATABASE_URL (from heroku config var) in gitpod setting and added postgres db url as its value. Other option is to create env.py file and specify the enviroment variable key/value. <br>
@@ -122,12 +122,12 @@ to always show on top of the iteration in the paginator. I learnt this concept f
     iii. In the new workspace, I commented out postgres and activated sqlite to be database <br>
     iv. I ran python3 manage.py migrate to ensure latest migration before sending data to postgres <br>
     v. I installed the missing module pip3 install psycopg2-binary and then tried to load data to postgres using python3 manage.py loaddata music <br>
-    vi. I got integrityError because the data files (images & audios) are connected to Userprofile and had to use these commands ............................
-    to migrate users and userprofile model as well <br>
+    vi. I got integrityError because the data files (images & audios) are connected to Userprofile and had to use commands to migrate users and userprofile model as well <br>
     vii. Then connected Gitpod back to Postgres by uncommenting it out, so that we can loaddata <br>
     viii. However, since the app automatically creates UserProfiles as soon as a User is created, I had to first upload Users, then check what UserProfiles have been created, and then check their PKs so I can adjust them in the audio dump <br>
     ix. When that was fixed, I was able to loaddata audio and my sqlite database content was fully transfered to postgres on Live site <br>
     x. At this time, all previous user logins started working again since users and userprofiles have been migrated along with their data into postgres
+
 
 ## 5.0 Deployment
 1. At the terminal, install Heroku cli and login to it using registered email & password on heroku site

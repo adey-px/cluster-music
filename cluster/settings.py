@@ -109,8 +109,8 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-# For sending confirmation email links to new accounts
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# For sending confirmation email links to new accounts - Check below
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Additional settings for allauth to work
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -212,3 +212,17 @@ if 'AWS_ACCESS' in os.environ:
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# For sending real confirmation email to register new user
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Copied from above line
+    DEFAULT_FROM_EMAIL = 'cluster@example.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')  # Set in heroku config var
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')  # Set in heroku config var
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
