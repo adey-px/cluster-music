@@ -3,6 +3,7 @@ The aim of the project is to develop a custom application for user to listen to 
 
 The project is deployed to Heroku on https://dj-cluster-music.herokuapp.com/
 
+
 ## 2.0 UX
 The web Application is developed for any user who enjoys playing audio music for relaxation or any other personal reason
 
