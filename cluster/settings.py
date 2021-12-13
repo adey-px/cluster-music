@@ -13,9 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 # ORIGINALLY INSTALLED WITH 3.2.8
 # CURRENT DJANGO VERSION IS 3.0.1
 
+from cluster.secret import *
 import os
 from pathlib import Path
 import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,11 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a=5g4(p1=f_hh=x%j^z746u#k*-=rp0y%e)d90-3l+c_akv77g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Add localhost so gitpod runserver command will also work
 ALLOWED_HOSTS = ['dj-cluster-music.herokuapp.com', 'localhost']
