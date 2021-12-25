@@ -131,6 +131,22 @@ def edit_audio(request, audio_id):
                 return redirect('edit_audio')
         else:
             form = AudioForm(instance=audio)
+
+    # If not, check if user has admin/superuser previledges
+    elif request.user.is_superuser:
+        if request.method == 'POST':
+            form = AudioForm(request.POST, request.FILES, instance=audio)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Selected audio was edited successfully')
+                return redirect('manage_product')
+            else:
+                messages.error(request, 'Failed task. Please try again.')
+                return redirect('edit_audio')
+        else:
+            form = AudioForm(instance=audio)
+
+    # If at least one in the above conditions is not met, throw error
     else:
         messages.error(request, 'You are not authorized to edit audio.')
         return redirect(reverse('home'))
@@ -155,15 +171,23 @@ def delete_audio(request, audio_id):
 
     # First check if current user is registered and properly logged in
     if request.user.is_authenticated:
-        # Check if audio is published_by the current user, else throw error
+
+        # Check if audio is published_by the current user
         if user_profile == audio.published_by:
             audio.delete()
             messages.success(request, 'Your audio has been deleted')
+            return redirect(reverse('my_audio'))
+        
+        # Verify if current user has admin/superuser previledges
+        elif request.user.is_superuser:
+            audio.delete()
+            messages.success(request, 'Unwanted audio has been deleted.')
+            return redirect(reverse('manage_product'))
+
+        # If at least one in the above conditions is not met, throw error
         else:
             messages.error(request, 'You are not authorized to delete audio.')
             return redirect(reverse('home'))
-
-        return render(request, 'music/my_audio.html')
 
 
 # View for saving favourite audio to fav_audio field in userprofile
@@ -222,3 +246,18 @@ def share_audio(request):
     """ A view that shares audio to social media """
 
     return render(request, 'music/share_audio.html')
+
+
+# View for managing product on the site
+@login_required
+def manage_product(request):
+    """ A view that diplays all audios from db to be managed """
+
+    # Get all audios from db for product management
+    songs = Audio.objects.all()
+
+    context = {
+        'audios': songs,
+    }
+
+    return render(request, 'music/manage_product.html', context)

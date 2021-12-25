@@ -110,13 +110,18 @@
 
                                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
                                     {% if request.user.is_authenticated %}
-                                        <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                                        <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                         <div role="separator" class="dropdown-divider"></div>
                                         <a href="{% url 'add_audio' %}" class="dropdown-item">Upload Audio</a>
                                         <div role="separator" class="dropdown-divider"></div>
-                                        
-                                        <a href="" class="dropdown-item">Upgrade to Pro</a>
+                                        <a href="{% url 'upgrade' %}" class="dropdown-item">Upgrade to Pro</a>
                                         <div role="separator" class="dropdown-divider"></div>
+
+                                        {% if request.user.is_superuser %}
+                                            <a href="{% url 'manage_product' %}" class="dropdown-item">Manage Product</a>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                        {% endif %}
+
                                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                                         <div role="separator" class="dropdown-divider"></div>
 
