@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Case, When
 from django.core.paginator import Paginator
 
@@ -12,28 +13,35 @@ from .forms import AudioForm
 
 
 # View for uploading or adding audio into db. Note attached user profile
+@login_required
 def add_audio(request):
     """ A view that uploads audio songs into db """
 
     # Note capture of .files to get in the images of the audio uploaded.
     # Based on django message levels in base.html, message.success, .error etc
     # .....will select template to use from includes/toasts directory
-    if request.method == 'POST':
 
-        # First get UserProfile model, imported above, from profiles app
-        user_profile = UserProfile.objects.get(user=request.user)
+    # First check if current user is registered and properly logged in
+    # to prevent any user with add_audio url from gaining access to add audio
+    if request.user.is_authenticated:
+        if request.method == 'POST':
 
-        # Check if form is submitted, then attach its data to current user
-        form = AudioForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save(user_profile)
-            messages.success(request, 'New audio added successfully')
-            return redirect('add_audio')
+            # Get UserProfile model, imported above, from profiles app
+            user_profile = UserProfile.objects.get(user=request.user)
+
+            # Check if form is submitted, then attach its data to current user
+            form = AudioForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save(user_profile)
+                messages.success(request, 'New audio added successfully')
+                return redirect('add_audio')
+            else:
+                messages.error(request, 'Failed to add audio. Please try again.')
+                return redirect('add_audio')
         else:
-            messages.error(request, 'Failed to add audio. Please try again.')
-            return redirect('add_audio')
+            form = AudioForm()
     else:
-        form = AudioForm()
+        return redirect(reverse('account_signup'))
 
     template = 'music/add_audio.html'
     context = {
@@ -84,6 +92,7 @@ def now_playing(request, audio_id):
 # Note - Another way is by saving audio (in add_audio view above) in
 # user_profile.my_audio where my_audio is a field inside the Profile model
 # This avoids published_by in Audio model. Ref to save_audio view below.
+@login_required
 def my_audio(request):
     """ A view that displays user audio. Get user profile and use it
     to filter all audio objects in the Audio model """
@@ -100,24 +109,31 @@ def my_audio(request):
 
 
 # View for editing uploaded audio by inidividual user
+@login_required
 def edit_audio(request, audio_id):
     """ A view that edits audio """
 
-    # Select audio by id from db to be edited
+    # Get userprofile & the selected audio by id from db to be edited
+    user_profile = UserProfile.objects.get(user=request.user)
     audio = get_object_or_404(Audio, pk=audio_id)
 
-    # Get form data with instance of the audio selected by its id
-    if request.method == 'POST':
-        form = AudioForm(request.POST, request.FILES, instance=audio)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your audio was edited successfully')
-            return redirect('my_audio')
+    # Check if audio is published_by the current user, else throw error
+    if user_profile == audio.published_by:
+        # Get form data with instance of the audio selected by its id
+        if request.method == 'POST':
+            form = AudioForm(request.POST, request.FILES, instance=audio)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your audio was edited successfully')
+                return redirect('my_audio')
+            else:
+                messages.error(request, 'Failed task. Please try again.')
+                return redirect('edit_audio')
         else:
-            messages.error(request, 'Failed to edit audio. Please try again.')
-            return redirect('edit_audio')
+            form = AudioForm(instance=audio)
     else:
-        form = AudioForm(instance=audio)
+        messages.error(request, 'You are not authorized to edit audio.')
+        return redirect(reverse('home'))
 
     template = 'music/edit_audio.html'
     context = {
@@ -129,20 +145,31 @@ def edit_audio(request, audio_id):
 
 
 # View for deleting uploaded audio in individual user account
+@login_required
 def delete_audio(request, audio_id):
     """ A view that edits audio uploaded in user account """
 
-    # Select audio by id from db to be deleted
+    # Get userprofile & the selected audio by id from db to be deleted
+    user_profile = UserProfile.objects.get(user=request.user)
     audio = get_object_or_404(Audio, pk=audio_id)
-    audio.delete()
-    messages.success(request, 'Your audio has been deleted')
 
-    return render(request, 'music/my_audio.html')
+    # First check if current user is registered and properly logged in
+    if request.user.is_authenticated:
+        # Check if audio is published_by the current user, else throw error
+        if user_profile == audio.published_by:
+            audio.delete()
+            messages.success(request, 'Your audio has been deleted')
+        else:
+            messages.error(request, 'You are not authorized to delete audio.')
+            return redirect(reverse('home'))
+
+        return render(request, 'music/my_audio.html')
 
 
 # View for saving favourite audio to fav_audio field in userprofile
 # Note - this view is only logic code that carries out a functionality
 # Since it doesn't return any template, it doesn't require context.
+@login_required
 def save_audio(request, audio_id):
     """ A view that saves favourite audio """
 
@@ -150,9 +177,14 @@ def save_audio(request, audio_id):
     audio = get_object_or_404(Audio, pk=audio_id)
     user_profile = UserProfile.objects.get(user=request.user)
 
-    # Add/Save the audio inside fav_audio field in userprofile
-    user_profile.fav_audio.add(audio)
-    messages.success(request, 'Your favourite audio has been saved')
+    # First check if current user is registered and properly logged in
+    if request.user.is_authenticated:
+
+        # Add/Save the audio inside fav_audio field in userprofile
+        user_profile.fav_audio.add(audio)
+        messages.success(request, 'Your favourite audio has been saved')
+    else:
+        return redirect(reverse('account_signup'))
 
     # After adding/saving audio, redirect to home page
     return redirect(reverse('home'))
@@ -161,6 +193,7 @@ def save_audio(request, audio_id):
 # View for displaying saved favourite audio in user account
 # Note - this view can be combined with save_audio after return redirect
 # Refer to add_audio view above for sample logic
+@login_required
 def view_saved_audio(request):
 
     # Get current userprofile & all audio in their fav_audio field
@@ -176,6 +209,7 @@ def view_saved_audio(request):
 
 
 # View for displaying play history to user account
+@login_required
 def history(request):
     """ A view that gets play history """
 
@@ -183,6 +217,7 @@ def history(request):
 
 
 # View for sharing audio to social media platforms
+@login_required
 def share_audio(request):
     """ A view that shares audio to social media """
 

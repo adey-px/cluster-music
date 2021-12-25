@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Add localhost so gitpod runserver command will also work
 ALLOWED_HOSTS = ['dj-cluster-music.herokuapp.com', 'localhost']
@@ -128,7 +128,9 @@ WSGI_APPLICATION = 'cluster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# If app is running on heroku, use postgres as db, otherwise run db on sqlite
+# If heroku DB_URL is set in local env var in gitpod, connect to postgres,
+# otherwise use default sqlite. This allows loaddata & dumpdata commands to work
+# after run migrations to update remote db with existing data in default sqlite
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
@@ -138,8 +140,8 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            }
         }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -215,12 +217,14 @@ if 'AWS_ACCESS' in os.environ:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# For sending real confirmation email to register new user
+# For sending REAL confirmation email to register new user in Live Site
+# If DEV is set to true in local env var in gitpod setting or in env.py file, use fake email
+# to send confirmation link at terminal, otherwise use heroku configVar to send real email
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Copied from above line
-    DEFAULT_FROM_EMAIL = 'example@clusterdomain.com'
+    DEFAULT_FROM_EMAIL = 'example@clusterdomain.com'  # Fake email config
 else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Copied from above line
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.gmail.com'

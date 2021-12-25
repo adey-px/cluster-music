@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from music.models import Audio
 
 # Create your views here.
@@ -11,13 +12,15 @@ def upgrade(request):
     return render(request, 'checkout/upgrade.html')
 
 
+@login_required
 # Checkout page view
 def checkout(request):
-    """ A view that renders checkout template   """
+    """ A view that renders checkout template """
 
     return render(request, 'checkout/checkout.html')
 
 
+@login_required
 # Checkout success view
 def checkout_success(request):
     """ A view that renders checkout success template """
@@ -25,6 +28,7 @@ def checkout_success(request):
     return render(request, 'checkout/checkout_success.html')
 
 
+@login_required
 # Download access view
 def download_access(request):
     """ A view that renders download access template """
