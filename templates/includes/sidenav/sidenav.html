@@ -5,7 +5,8 @@
       <span class="d-none d-lg-inline">Home</span> 
     </a>
     
-    {% if active_audio %}
+    <!-- One button link opens different pages base on which condition is met -->
+    {% if audio_play %}
       <!-- audio_play here is the var passed into context inside context.py file -->
       <a href="{% url 'now_playing' audio_play %}" class="list-group-item list-group-item-action list-group-item-dark">
         <i class="far fa-play-circle"></i> 
@@ -13,13 +14,14 @@
       </a>
 
     {% else %}
-      <!-- Render disabled button if no audio is playing -->
-      <a class="list-group-item list-group-item-action list-group-item-dark">
-        <i class="far fa-play-circle"></i> 
-        <span class="d-none d-lg-inline">Now Playing</span> 
-      </a>
+      <!-- Link to display blank page when user has not played audio after newly opening site -->
+        <a href="{% url 'not_playing' %}" class="list-group-item list-group-item-action list-group-item-dark">
+          <i class="far fa-play-circle"></i> 
+          <span class="d-none d-lg-inline">Now Playing</span> 
+        </a>
     {% endif %}
   
+    <!-- Extra button links to show when user is logged in -->
     {% if request.user.is_authenticated %}
       <a href="{% url 'my_audio' %}" class="list-group-item list-group-item-action list-group-item-dark">
         <i class="fas fa-headphones-alt"></i> 
@@ -30,7 +32,8 @@
         <span class="d-none d-lg-inline">Favourite</span> 
       </a>
     {% endif %}
-      
+    
+    <!-- Other button links on the sidenav-->
     <a href="{% url 'history' %}" class="list-group-item list-group-item-action list-group-item-dark">
       <i class="fas fa-history"></i> 
       <span class="d-none d-lg-inline">History</span> 

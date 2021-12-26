@@ -51,6 +51,13 @@ def add_audio(request):
     return render(request, template, context)
 
 
+# View for displaying blank page when user has not played audio
+def not_playing(request):
+    """ A view that displays blank page """
+
+    return render(request, 'music/not_playing.html')
+
+
 # View for playing audio songs existing in db
 # This view performs 2 functions - logic to play audio and 
 # code to render now_playing template, wc can be separated
