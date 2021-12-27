@@ -26,7 +26,11 @@
             
             <!-- Image label for audio songs -->
             <div class="#" style="padding-bottom: 20px;">
-              <img src="{{ audio.label.url }}" class="mx-auto d-block img-fluid" alt="song_label" />
+              {% if audio.label %}
+                <img src="{{ audio.label.url }}" class="mx-auto d-block img-fluid" alt="song_label" />
+              {% else %}
+                <img src="{{ MEDIA_URL }}noimage.jpg" class="mx-auto d-block img-fluid" alt="song_label">
+              {% endif %}
             </div>
 
             <!-- Audio songs fetched from db with play fucntionality in script.js file -->

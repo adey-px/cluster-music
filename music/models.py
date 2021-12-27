@@ -17,11 +17,10 @@ class Audio(models.Model):
     title = models.CharField(max_length=20, blank=False, null=False)
     artist = models.CharField(max_length=20, blank=False, null=False)
     song = models.FileField(blank=False, null=False)
-    label = models.ImageField('Photo')
-    duration = models.CharField(max_length=30)
+    label = models.ImageField(null=True, blank=True)
     published_by = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
                                      related_name='audio')
-    
+
     def __str__(self):
         return self.title
