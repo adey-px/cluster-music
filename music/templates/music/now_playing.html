@@ -84,7 +84,13 @@
           {% for audio in songs %}
             <a href="{% url 'now_playing' audio.id %}" class="text-decoration-none d-none d-lg-inline">
               <li class="media">
-                <img src="{{ MEDIA_URL }}{{ audio.label }}" class="mr-3 audio-label" alt="audio label">
+
+                {% if audio.label %}
+                  <img src="{{ MEDIA_URL }}{{ audio.label }}" class="mr-3 audio-label" alt="song_label">
+                {% else %}
+                  <img src="{{ MEDIA_URL }}noimage.jpg" class="mr-3 audio-label" alt="song_label">
+                {% endif %}
+
                 <div class="media-body">
                   <small class="mt-0 mb-1 text-light">
                     {{ audio.title }} - {{ audio.artist }}
