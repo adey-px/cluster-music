@@ -29,7 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', 'xyz')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Add localhost so gitpod runserver command will also work
 ALLOWED_HOSTS = ['dj-cluster-music.herokuapp.com', 'localhost']

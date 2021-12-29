@@ -1,5 +1,5 @@
 ## 1.0 Project Name: Cluster Music
-The aim of the project is to develop a custom application for user to listen to audio music, similar to existing popular audio apps like Spotify, Amazon music & YouTube music among others. The application consists of a home page displaying audio and a search bar where user can search for audio music to play. There is also a navigation panel on the left side and it appears on all pages of the site
+The aim of the project is to develop a custom application for user to listen to audio music, similar to existing popular audio apps like Spotify, Amazon music & YouTube music among others. The application consists of a home page displaying audio and a search bar where user can search for audio music to play. There is also a navigation panel on the left side and it appears on all pages of the site. In this site, the content products which are mainly audio files are created by all users. Any user can register and login and then begin uploading their audios which will automatically be made available for other users to listen to. So, the Admin or Superuser only provides the platform while users add their content to the platform, similar to what happens in social media sites like Facebook and YouTube. However, the Admin or Superuser has the previledge to view all audios uploaded by any user and they can edit or delete any audio based on their own discretion as the site manager. Audio files of any format is allowed on the site with image label as an option. There is a default label image that programmatically attached to any audio uploaded without image.
 
 The project is deployed to Heroku on https://dj-cluster-music.herokuapp.com/
 
@@ -7,16 +7,23 @@ The project is deployed to Heroku on https://dj-cluster-music.herokuapp.com/
 ## 2.0 UX
 The web Application is developed for any user who enjoys playing audio music for relaxation or any other personal reason
 
-### 2.1 User storiess
+### 2.1 User stories
 As a user, I want to:
 1. click on any audio to play it 
-2. create an account and login successfully 
-3. upload my own audio to the site to allow other users to listen to it
-4. view list of my own audios and be able to edit or delete them
-5. save favourite audio as a playlist
+2. navigate around within the site 
+3. search audio by title or artist's name
+4. create an account and login successfully 
+5. upload my own audio to the site to allow other users to listen to it
+6. view the list of my own audios and be able to edit or delete them
+7. save favourite audios on the site to create a playlist
 
-As a Pro user, I want to:
+In addition to the user stories above, as a Pro user, I want to:
 1. make payment and download audio from the site to my computer
+
+In addition to what other users do, as an Admin user, I want to:
+1. view all audios uploaded on the site 
+2. check that the audios complies with site owner's policy
+3. edit or delete any audio that violates site owner's policy
 
 ### 2.2 Wireframes
 In order to bring the idea of this project to life, wireframes were produced with the use of marker & paper. The folder named "wireframes" has been uploaded in this project's GitHub repository. The folder contains images of the wireframes designed to show Desktop, Tablet and Mobile views of various pages of the application
@@ -25,27 +32,25 @@ In order to bring the idea of this project to life, wireframes were produced wit
 ## 3.0 Features
 ### 3.1 Existing Features
 1. The site has top navigation bar having name logo on the right, a search bar at the center and user account account on the left side
-2. The site has no footer so as to allow continuous scrolling down similar to Youtube site and Facebook
-3. The user account icon consists of Register and Login links which allow user to register new account and login existing account respectively
-4. There is also a navigation panel on left side which consists of links that allow user to navigate to inner pages of the site
-5. When user clicks on an audio object, it opens in now_playing page and the audio is played from beginning to end
-6. While audio is playing, it can be paused or fast-forwarded by user
-7. Audio has functionality which allows user to select previous or next audio to play
-8. On now_playing page, there is a right panel which loops over all audio in database. This makes it easy for user to have access to select any audio of their choice to play. The right panel is hidden is mobile view
-9. Registered user has the previledge to upload their own audio and they can see the list of their audio in "Your Audio" page
-10. Pro user who has made once-off payment using Stripe payment link provided, has the previledge for unlimited download of audio from the site per session
-
-            Username: adey-px
-            Paswword: adeyking1
+2. User can search audio by title or artist's name
+3. The site has no footer so as to allow continuous scrolling down to see more content similar to Youtube site and Facebook
+4. The user account icon consists of Register and Login links which allow user to register new account and login existing account respectively
+5. There is also a navigation panel on left side which consists of links that allow user to navigate to inner pages of the site
+6. When user clicks on an audio object, it opens in now_playing page and the audio is played from beginning to end
+7. While audio is playing, it can be paused or fast-forwarded by user
+8. Audio has functionality which allows user to select previous or next audio to play
+9. On now_playing page, there is a right panel which loops over all audio in database. This makes it easy for user to have access to select any audio of their choice to play. The right panel is hidden is mobile view
+10. Registered user has the previledge to upload their own audio and they can see the list of their audio in "Your Audio" page
+11. Pro user who has made once-off payment using Stripe payment link provided, has the previledge for unlimited download of audio from the site per session
+12. Admin user can view all audios on the site. They can edit or delete any audio based on their discretion.
+13. The site has FAQ which provides answers to some questions that users may have about the site
+14. The site also has Feedback page to allow user to contact site Admin in case of any issue
 
 ### 3.2 Features Left to Implement
-1. Fucntionality to search for audio by title or artist in the search bar
-2. Add autoplay functionality to audios in the player
-3. Functionality to check audio format and automatically detect audio length/duration during uploading
-4. Random display of various audios from database on the home page and the right panel on now_playing page
-5. Allow user to be able to share audio on Social media platforms and email through button link attached to each audio
-6. Allow authenticated user to see their play history on History page accessible via the History button link located on left panel
-7. Use coding to implement Stripe payment for Pro users rather than the Payment link used due to constraint of project submission time
+1. Add autoplay functionality to audios in the player
+2. Functionality to check file type before uploading to be sure that only audio files are strictly allowed for upload on the site
+3. Allow user to be able to share audio on Social media platforms and email through button link attached to each audio
+4. Allow authenticated user to see their play history on History page accessible via the History button link located on left panel
 
 ### 3.3 Languages and Technologies Used
 1. <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML5:</a>  This project uses HTML5 as the backbone and main markup language
@@ -81,43 +86,52 @@ This application is compatible on popular browsers including Chrome, Edge, Safar
 
 ### 4.4 Testing User Story 
 The following user stories were tested for user: 
-1. select an audio and play it successfully 
-2. create an account with email/username and password
-3. Login into their account successfuly
-4. upload audio to the site to allow other users to listen to it
-5. view list of their uploaded audios and be able to edit or delete them
-6. save favourite audio as a playlist
+1. they can click on any audio to play it 
+2. they are able to navigate around within the site 
+3. they are able to search audio by title or artist's name in the search bar provided
+4. they can create an account and login successfully 
+5. they can upload their own audio to the site 
+6. they are able to view the list of their own audios and be able to edit or delete them
+7. they are able save favourite audios on the site to create a playlist in their account
 
-The following user story was tested for Pro user:
-1. download audio from the site to my computer successfully after making payment
+The following user stories were tested for Pro user: 
+1. they can make secured payment through the link provided and download audio from the site to their computer
+
+The following user stories were tested for Admin user: 
+1. they are able to view all audios uploaded on the site 
+2. they can play an audio to check that the audios complies with site owner's policy
+3. they can also edit or delete any audio that violates site owner's policy
 
 ### 4.5 Testing Existing Features
-1. All the navigation links and buttons on the application work as expected
-2. User can add/upload audio into the database
-3. They can also create/read (play audio), edit/update and delete their audio successfully and these complete CRUD functionalities
-4. All the forms including Register form, Login form and all other forms work as expected
-5. They can create account and login sucessfully with their username and password
-6. Authenticated user can  upload audio and view the list of their audio in "Your Audio" page
-7. They can save audio and create a playlist of their favorite audios
-8. They can click forward or backward button to play next or previous audio respectively
-9. They can click to play/pause, fastward or rewind audio on now_playing page
-10. Pro user can download unlimited audio to their personal computer
+1. User is able to navigate around the site using the link on top right corner of the top search bar
+2. User can type an audio's name or artist to search for audio to play
+3. User can scroll down endlessly to view more content on the site
+4. User can click on Account link on the navbar to register or login
+5. User navigates through inner pages using the left sidebar
+6. User clicks on an audio to play in now_playing page
+7. While audio is playing, it can be paused or fast-forwarded by user
+8. Audio has functionality which allows user to select previous or next audio to play
+9. User can select an audio to play from right panel on now_playing page
+10. Registered user can upload their own audio and they can see the list of their audio in "Your Audio" page
+11. Pro user who has made once-off payment using Stripe payment link provided, has the previledge for unlimited download of audio from the site per session
+12. Admin user is able to view all audios on the site. They can edit or delete any audio based on their discretion.
+13. User can get answer to some of the questions by checking FAQ page
+14. User is able to contact site Admin using the link on feedback page
 
 ### 4.6 Bugs
 While developing this application, I encountered some bugs and fixed them as follow:
 1. When I clicked any audio to play on home page, it always displayed the first audio on the page whereas it was supposed to display and play
 the specific audio that I clicked. I fixed this bug by using Coditional Expressions with Case & When, to make the selected audio object
 to always show on top of the iteration in the paginator. I learnt this concept from <a href="https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator">Stack Overflow</a>
-2. I used Stripe payment link provided on the Stripe website to implement payment for Pro user with feedback provided. However, Test mode from Stripe does not allow recurrent subscription. It was stated that I need to activate my Stripe account to be able to send Live subscription to users. Hence the need to make user payment active only when they remain logged in. Users have to make another payment to have access to the download page, if they logout of their Cluster account or close and reopen their browser again next time
-3. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got this site <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">to downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
-4. After successful deployment to heroku, created and connected to amazon S3 bucket to serve static files, the whole data (imgaes & audio) in my database did not show in live site on heroku but showing normally on development site through gitpod and all my user logins including admin login refused to work. I contacted tutor support and they guided me in following ways: <br>
+2. During deployment to heroku, I got an error at the terminal "AssertionError: database connection isn’t set to UTC”. I searched Google for solution and I got this site <a href="https://exerror.com/assertionerror-database-connection-isnt-set-to-utc/">to downgrade psycopg2</a> installation to 2.8.6 and that fixed the issue
+3. After successful deployment to heroku, created and connected to amazon S3 bucket to serve static files, the whole data (imgaes & audio) in my database did not show in live site on heroku but showing normally on development site through gitpod and all my user logins including admin login refused to work. I contacted tutor support and they guided me in following ways: <br>
     i. I manually created enviroment variable named DATABASE_URL (from heroku config var) in gitpod setting and added postgres db url as its value. Other option is to create env.py file and specify the enviroment variable key/value. <br>
     ii. I closed and restarted my gitpod workspace to reset the connected databse but the issue not still resolved at this time <br>
     iii. Next, I cut out the unneccessary requirements that gitpod added to my requirements.txt using this site https://lechien73.github.io/reqfix/ filter out the unrequired input. I noticed those unrequired files got listed after I installed boto3 and django-storages and then freeze the requirements.txt at gitpod terminal. I copied the filtered requirements and use it to replace the content inside requirements,txt file <br>
     iv. After that was done, I saved my requirements.txt file, Then I ran these two commands at the terminal <br>
         pip3 uninstall -y -r <(pip3 freeze) followed by pip3 install -r requirements.txt <br>
     v. At this time, I was able to create new super user and I logged into live site admin through https://dj-cluster-music.herokuapp.com/admin. Then I noticed that all my Audio database fileds were migrated and I just uploaded new fresh data into database and both the development site and live site worked normally <br>
-5. However, out my curiosity and in further attempt to load existing data from previous database (sqlite) to current database (postgres), I contacted tutor support for help nad they guided me through even though few errors/issues were also encountered as below: <br>
+4. However, out my curiosity and in further attempt to load existing data from previous database (sqlite) to current database (postgres), I contacted tutor support for help nad they guided me through even though few errors/issues were also encountered as below: <br>
     i. At the terminal, I used this command python3 manage.py dumpdata music > music.json but importError error showing <br>
     ii. Due to various showing at terminal, I opened new gitpod workspace for my existing project repo <br>
     iii. In the new workspace, I commented out postgres and activated sqlite to be database <br>
@@ -131,6 +145,7 @@ to always show on top of the iteration in the paginator. I learnt this concept f
 
 
 ## 5.0 Deployment
+Please note that the steps listed here are learnt directly from Boutique Ado project and I have documented them as I followed to deploy this project.
 1. At the terminal, install Heroku cli and login to it using registered email & password on heroku site
 2. Pip3 install required packages which are psycopg2-binary and gunicorn
 3. Freeze the requirements and direct them to requirements.txt
