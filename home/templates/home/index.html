@@ -31,6 +31,9 @@
                     <div class="card-body audio-card">
                       <small class="card-title">{{ audio.title }}</small>
                       
+                      <br/>
+                      <small class="card-title text-dark">{{ audio.artist }}</small>
+
                       {% if request.user.is_authenticated %}
                         <ul style="list-style-type: none;" class="inline-block float-right">
                             <li class="nav-item dropdown">
@@ -44,7 +47,7 @@
                                   Share <i class="fas fa-share-square float-right"></i>
                                 </a>
                                 <a class="dropdown-item" href="{% url 'upgrade' %}">
-                                  Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i>
+                                  Download <i class="far fa-arrow-alt-circle-down float-right"></i>
                                 </a>
 
                             </div>
@@ -65,7 +68,7 @@
                               </a>
                                
                                <a class="dropdown-item" href="{% url 'account_login' %}">
-                                Downlaod <i class="far fa-arrow-alt-circle-down float-right"></i>
+                                Download <i class="far fa-arrow-alt-circle-down float-right"></i>
                               </a>
 
                             </div>
@@ -73,8 +76,6 @@
                         </ul>
                       {% endif %}
 
-                      <br/>
-                      <small class="card-title text-dark">{{ audio.artist }}</small>
                     </div>
                   </div>
 

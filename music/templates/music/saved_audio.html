@@ -29,8 +29,13 @@
                         <img src="{{ MEDIA_URL }}noimage.jpg" class="card-img-top" alt="song_label">
                       {% endif %}
                       
-                      <div class="card-body">
+                      <div class="card-body audio-card">
                         <small class="card-title">{{ audio.title }}</small>
+
+                        <br/>
+                        <small class="card-title text-dark">
+                          {{ audio.artist }}
+                        </small>
 
                         <ul style="list-style-type: none;" class="inline-block float-right">
                           <li class="nav-item dropdown">
@@ -47,11 +52,7 @@
                             </div>
                           </li>
                         </ul>
-                          
-                        <br/>
-                        <small class="card-title text-dark">
-                          {{ audio.artist }}
-                        </small>
+
                       </div>
                     </div>
             
