@@ -72,19 +72,7 @@ All the internal and external links including menu items on navigation bar works
 3. JavaScript codes were tested with <a href="https://jshint.com/" target="_blank">JSHint</a>. The codes returned with no error
 4. Python codes were tested with <a href="http://pep8online.com/" target="_blank">PEP8</a>. The codes returned with no error
 
-### 4.2 Testing Responsiveness
-All the pages of this application are well responsive on all devices including dektop, tablet and mobile devices. See images below for results
-<img src="readme/capture-one.png" alt="responsiveness-result">
-<img src="readme/capture-two.png" alt="responsiveness-result">
-<img src="readme/capture-three.png" alt="responsiveness-result">
-<img src="readme/capture-four.png" alt="responsiveness-result">
-<img src="readme/capture-five.png" alt="responsiveness-result">
-
-### 4.3 Testing Browser Compatibility
-This application is compatible on popular browsers including Chrome, Edge, Safari and Firefox.
-<img src="readme/browser-compatibility.png" alt="browser-compatibility-result"> 
-
-### 4.4 Testing User Story 
+### 4.2 Testing User Story 
 The following user stories were tested for user: 
 1. they can click on any audio to play it 
 2. they are able to navigate around within the site 
@@ -178,9 +166,7 @@ Please note that the steps listed here are learnt directly from Boutique Ado pro
 
 ## 6.0 Credits
 ### 6.1 Content
-1. This project used Bootstrap 4.4 for its User Interface <a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/">Bootstrap</a> 
-2. Code for main header with Search bar and Django message levels were copied from Code Institute Boutique Ado project
-3. I got idea for JavaScript code to play audio and html code for audio display from <a href="https://www.section.io/engineering-education/how-to-build-a-music-player-using-django/">Onojakpor Ochuko</a> 
+This project used Bootstrap 4.4 for its User Interface <a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/">Bootstrap</a> 
 
 ### 6.2 Media
 The images used for the audio labels were obtained from <a href="images.google.com">Google images</a>
