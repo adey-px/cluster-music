@@ -1,8 +1,6 @@
 ## 1.0 Project Name: Cluster Music
 The aim of the project is to develop a custom application for user to listen to audio music, similar to existing popular audio apps like Spotify, Amazon music & YouTube music among others. The application consists of a home page displaying audio and a search bar where user can search for audio music to play. There is also a navigation panel on the left side and it appears on all pages of the site. In this site, the content products which are mainly audio files are created by all users. Any user can register and login and then begin uploading their audios which will automatically be made available for other users to listen to. So, the Admin or Superuser only provides the platform while users add their content to the platform, similar to what happens in social media sites like Facebook and YouTube. However, the Admin or Superuser has the previledge to view all audios uploaded by any user and they can edit or delete any audio based on their own discretion as the site manager. Audio files of any format is allowed on the site with image label as an option. There is a default label image that programmatically attached to any audio uploaded without image.
 
-The project is deployed to Heroku on https://dj-cluster-music.herokuapp.com/
-
 
 ## 2.0 UX
 The web Application is developed for any user who enjoys playing audio music for relaxation or any other personal reason
